@@ -1,0 +1,27 @@
+{
+  "name": "study-group-maker-2.0",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js --ignore client",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kendall529/study-group-maker-2.0.git"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  },
+      "keywords": [],
+      "author": "",
+      "license": "ISC",
+      "bugs": {
+        "url": "https://github.com/kendall529/study-group-maker-2.0/issues"
+      },
+      "homepage": "https://github.com/kendall529/study-group-maker-2.0#readme"
+    }
