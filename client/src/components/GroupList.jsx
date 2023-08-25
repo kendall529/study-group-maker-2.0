@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const GroupList = ({ groups, users2, enrollments, title }) => {
+const GroupList = ({ groups, users}) => {
   if (!groups.length) {
     return <h3>No Groups Yet</h3>;
   }
@@ -26,7 +26,7 @@ const GroupList = ({ groups, users2, enrollments, title }) => {
                         Time to Meet: {group.meet_time}
                     </p>
                     <p>
-                        Created by: {users2.user.first_name} {users2.user.last_name}
+                        Created by: {users.user.first_name} {users.user.last_name}
                     </p>
                     <p>
                         Meeting Link
