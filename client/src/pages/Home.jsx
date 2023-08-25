@@ -1,7 +1,6 @@
 const Home = () => {
   
     return (
-      <main>
         <div>
           <div>
             <section id="home">
@@ -99,7 +98,6 @@ const Home = () => {
 
           </div>
         </div>
-      </main>
     );
   };
   

@@ -6,14 +6,12 @@ const Profile = () => {
 
   
     return (
-      <main>
         <div>
           <div>
             <UserGroups/>
             <GroupForm/>
           </div>
         </div>
-      </main>
     );
   };
   
