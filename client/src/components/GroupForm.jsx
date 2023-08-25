@@ -94,9 +94,6 @@ const GroupForm = ({groups, users2, enrollments, title}) => {
                 </div>
 
             </div>
-
-
-
     </section>
     </div>
   );
