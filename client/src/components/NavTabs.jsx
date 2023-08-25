@@ -53,6 +53,24 @@ function NavTabs() {
             Contact
           </Link>
         </li>
+        <li className="nav-item">
+          <Link
+            to="/Login"
+            // Checks to see if the contact page is the current page
+            className={currentPage === '/Login' ? 'nav-link active' : 'nav-link'}
+          >
+            Login
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link
+            to="/SignUp"
+            // Checks to see if the contact page is the current page
+            className={currentPage === '/SignUp' ? 'nav-link active' : 'nav-link'}
+          >
+            Sign Up
+          </Link>
+        </li>
       </ul>
     );
   }
