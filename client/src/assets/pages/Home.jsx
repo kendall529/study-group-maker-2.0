@@ -80,7 +80,7 @@ const Home = () => {
                                     </p>
                                 </div>
                                 <div class="creators-slide swiper-slide">
-                                    <img src="../images/michaela.jpg" alt=""/>
+                                    <img src="" alt=""/>
                                         <h3>Michaela Brown</h3>
                                         <p>Michaela is currently working as a tax agent but looking to start work in programming. A graduate from Washburn University with a minor in
                                             computer science, she found a love for coding and has decided to pursue it further. She finds nothing to be more satisfying than to see a 

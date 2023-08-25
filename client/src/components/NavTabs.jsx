@@ -13,27 +13,41 @@ function NavTabs() {
           </Link>
         </li>
         <li className="nav-item">
-          <Link
-            to="/About"
-            // Check to see if the currentPage is `About`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
-            className={currentPage === '/About' ? 'nav-link active' : 'nav-link'}
+          <Link 
+            to=".creators"
+          >
+            Creators
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link 
+            to=".about"
           >
             About
           </Link>
         </li>
         <li className="nav-item">
           <Link
-            to="/Blog"
-            // Check to see if the currentPage is `Blog`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
-            className={currentPage === '/Blog' ? 'nav-link active' : 'nav-link'}
+            to="/Groups"
+            // Checks if the groups page is the current page
+            className={currentPage === '/About' ? 'nav-link active' : 'nav-link'}
           >
-            Blog
+            Groups
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link
+            to="/Profile"
+            // Check to see if the user profile is the current page
+            className={currentPage === '/Profile' ? 'nav-link active' : 'nav-link'}
+          >
+            Profile
           </Link>
         </li>
         <li className="nav-item">
           <Link
             to="/Contact"
-            // Check to see if the currentPage is `Contact`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
+            // Checks to see if the contact page is the current page
             className={currentPage === '/Contact' ? 'nav-link active' : 'nav-link'}
           >
             Contact
