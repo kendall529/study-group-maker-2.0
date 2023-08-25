@@ -10,7 +10,10 @@ function App() {
 
   return (
     <>
-      <h1>Hello, this a react app check</h1>
+        <Nav />
+        <main>
+        <Outlet />
+        </main>
     </>
   )
 }

@@ -15,7 +15,6 @@ const Groups = () => {
 
   
     return (
-      <main>
         <div>
           <div>
             {loading || loading2 ? (
@@ -28,7 +27,6 @@ const Groups = () => {
           )}
           </div>
         </div>
-      </main>
     );
   };
   
