@@ -7,42 +7,43 @@ const UserGroups = ({ groups, users}) => {
 
   return (
         <div class="group-container">
-            {groups &&
-                groups.map((group) => (
+            {enrollments &&
+                enrollments.map((group) => (
                     <div class="user-group-list-container">
-                    {{#if enrollments.user_id.length}}
                     <div id="user-group-list">
-                        {{#each enrollments.user_id as |group|}}
+                        {enrollments.user_id}
     
                         <div class="user-group-list-card">
                             <div class="user-group-info">
                             <div>
                                 <h2>
-                                    <a href="/groups/{{group.id}}">{{group.group_name}}</a>
+                                    <a href="/groups/{{group.id}}">{group.group_name}</a>
                                 </h2>
                                 <p>
-                                    Study Topic: {{group.topic.topic_name}}!
+                                    Study Topic: {group.topic.topic_name}!
                                 </p>
                                 <p>
-                                    Skill Level: {{group.skill_level}}
+                                    Skill Level: {group.skill_level}
                                 </p>
                                 <p>
-                                    Time to Meet: {{group.meet_time}}
+                                    Time to Meet: {group.meet_time}
                                 </p>
                                 <p>
-                                    Created by: {{group.user.first_name}} {{group.user.last_name}}
+                                    Created by: {group.user.first_name} {group.user.last_name}
                                 </p>
                             </div>
                         </div>
                         <div>
                             <form id="add-user-{{group.id}}" class="add-user form" action="">
                                 <label class="label" for="user_names">Add User: </label>
-                                <select class="select user_names" name="user_names">
-                                    {{!-- {{#unless enrollments.users.id}} --}}
-                                    {{#each ../users}}<option value="{{id}}">{{first_name}} {{last_name}} | {{user_name}}
-                                    </option>
-                                    {{/each}}
-                                    {{!-- {{/unless}} --}}
+                                    <select class="select user_names" name="user_names">
+                                    {
+                                        users &&
+                                            users.map((user) =>
+                                            <option value="{{id}}">{{first_name}} {{last_name}} | {{user_name}}
+                                            </option>
+                                            )
+                                    }
                                 </select>
     
                                 <button class="add-user button has-background-info-dark has-text-white" type="submit">Add
@@ -50,25 +51,13 @@ const UserGroups = ({ groups, users}) => {
                             </form>
     
                         </div>
-                        {{#if group.isOwner}}
-                        <div>
-                            <button class="deleteButton buttonDlt" data-id="{{group.id}}"><i
-                                class='bx bx-trash'></i></button>
-                        </div>
-                        {{else}}
-                        <div>
-                            <button id="unenrolled-{{group.id}}" class="exitButton buttonExit" data-id="{{group.id}}">Leave
-                        </div>
-                        {{/if}}
-                    </div>
-                    {{/each}}
                 </div>
-                <script src="./js/enrollUser.js"></script>
+
+            </div>
+            <script src="./js/enrollUser.js"></script>
                 <script src="/js/deleteGroup.js"></script>
                 <script src="/js/unenrolled.js"></script>
                 <script src="./js/groups.js"></script>
-            </div>
-            ))}
         </div>
   );
 };
