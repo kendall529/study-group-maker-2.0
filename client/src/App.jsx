@@ -1,10 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react'
+import { connectWithWebSocket } from './utils/webSockConnection/webSockConnection'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    connectWithWebSocket();
+  }, []);
 
   return (
     <>
