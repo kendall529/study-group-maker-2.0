@@ -10,7 +10,7 @@ const { authMiddleware } = require("./utils/auth");
 // DB Connection
 const db = require("./config/connection");
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 const app = express();
 
 const server = new ApolloServer({
@@ -20,7 +20,7 @@ const server = new ApolloServer({
 });
 
 // Apply Apollo middleware
-server.applyMiddleware({ app });
+// server.applyMiddleware({ app });
 
 // Middleware for parsing
 app.use(express.urlencoded({ extended: true }));
