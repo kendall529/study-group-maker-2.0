@@ -1,18 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react'
+import { connectWithWebSocket } from './utils/webSockConnection/webSockConnection'
+import React from 'react';
+import {
+  BrowserRouter as Router, Link, useLocation
+} from 'react-router-dom';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    connectWithWebSocket();
+  }, []);
 
   return (
-    <>
+    <Router>
         <Nav />
         <main>
         <Outlet />
         </main>
-    </>
+    </Router>
   )
 }
 

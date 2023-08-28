@@ -1,41 +1,59 @@
-const express = require('express');
-const { ApolloServer } = require('@apollo/server');
-const { expressMiddleware } = require('@apollo/server/express4');
-const path = require('path');
+const express = require("express");
+const path = require("path");
+const socketIO = require("socket.io");
 
-const { typeDefs, resolvers } = require('./schemas');
-const db = require('./config/connection');
+// Apollo Server
+const { ApolloServer } = require("apollo-server-express");
+const { typeDefs, resolvers } = require("./schemas");
+const { authMiddleware } = require("./utils/auth");
 
-const PORT = process.env.PORT || 3001;
+// DB Connection
+const db = require("./config/connection");
+
+const PORT = process.env.PORT || 5000;
 const app = express();
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: authMiddleware,
 });
 
-const startApolloServer = async () => {
-  await server.start();
-  
-  app.use(express.urlencoded({ extended: true }));
-  app.use(express.json());
-  
-  app.use('/graphql', expressMiddleware(server));
+// Apply Apollo middleware
+// server.applyMiddleware({ app });
 
-  // if we're in production, serve client/dist as static assets
-  if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/dist')));
+// Middleware for parsing
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-    });
-  } 
+// Serve static assets
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+}
 
-  db.once('open', () => {
-    app.listen(PORT, () => {
-      console.log(`API server running on port ${PORT}!`);
-      console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
-    });
+// Fallback route
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
+
+// Initialize DB and then start the Express and Socket.io servers
+db.once("open", () => {
+  const httpServer = app.listen(PORT, () => {
+    console.log(`API server running on port ${PORT}!`);
+    console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
   });
-};
 
-startApolloServer();
+  // Initialize Socket.io
+  const io = socketIO(httpServer, {
+    cors: {
+      origin: "*",
+      methods: ["GET", "POST"],
+    },
+  });
+
+  io.on("connection", (socket) => {
+    socket.emit("connection", null);
+    console.log("New user connected.");
+    console.log(socket.io);  // uncomment if needed
+  });
+});
