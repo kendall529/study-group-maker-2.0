@@ -39,4 +39,4 @@ const Profile = () => {
     );
   };
   
-export default Groups;feat
+export default Profile;
