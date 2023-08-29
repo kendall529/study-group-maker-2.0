@@ -5,13 +5,14 @@ const typeDefs = `
     first_name: String!
     last_name: String!
     email: String!
+    groups: [Group]
   }
 
   type Group {
     _id: ID!
     group_name: String!
     group_description: String!
-    topic: Topic!
+    topic_id: ID!
     skill_level: String!
     zoom_link: String!
     meet_time: String!
@@ -45,10 +46,10 @@ const typeDefs = `
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addGroup(group_name: String!, group_description: String!, topic: Topic!, skill_level: String!, zoom_link: String!, meet_time: String!, created_by: User!)
-    removeGroup(group_id: ID!)
-    enroll(user: User!, group: Group!)
-    unEnroll(user_id: ID!, group_id: ID!)
+    addGroup(group_name: String!, group_description: String!, topic_id: ID!, skill_level: String!, zoom_link: String!, meet_time: String!, created_by: ID!): Group
+    removeGroup(group_id: ID!): User
+    enroll(user_id: ID!, group_id: ID!): User
+    unEnroll(user_id: ID!, group_id: ID!): User
   }
 `;
 

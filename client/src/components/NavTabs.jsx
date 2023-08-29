@@ -1,3 +1,6 @@
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+
 function NavTabs() {
     const currentPage = useLocation().pathname;
   
@@ -14,14 +17,14 @@ function NavTabs() {
         </li>
         <li className="nav-item">
           <Link 
-            to=".creators"
+            to="#creators"
           >
             Creators
           </Link>
         </li>
         <li className="nav-item">
           <Link 
-            to=".about"
+            to="#about"
           >
             About
           </Link>

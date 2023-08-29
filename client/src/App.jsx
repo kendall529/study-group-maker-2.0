@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react'
 import { connectWithWebSocket } from './utils/webSockConnection/webSockConnection'
+import React from 'react';
+import {
+  BrowserRouter as Router, Link, useLocation
+} from 'react-router-dom';
 
+import { Outlet } from 'react-router-dom';
+import Nav from './components/NavTabs';
 
 function App() {
 
@@ -9,12 +15,16 @@ function App() {
   }, []);
 
   return (
-    <>
-        <Nav />
+    <Router>
+        <navbar>
+        <a id="logo" class="" href="/">Study Group Maker</a>
+          <Nav />
+        </navbar>
+
         <main>
-        <Outlet />
+         <Outlet />
         </main>
-    </>
+    </Router>
   )
 }
 

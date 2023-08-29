@@ -6,3 +6,4 @@ server/node_modules
 *.yaml
 client/*.yaml
 server/*.yaml
+server/.env
