@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 // Set token secret and expiration date from environment variables
 const secret = process.env.JWT_SECRET || 'mysecretsshhhhh';
-const expiration = process.env.JWT_EXPIRATION || '2h';
+const expiration = process.env.JWT_EXPIRATION || '2h';        
 
 const INVALID_TOKEN = 'Invalid token';
 const STATUS_BAD_REQUEST = 400;

@@ -1,6 +1,6 @@
 import socketClient from 'socket.io-client';
 
-const SERVER = 'http://localhost:5000';
+const SERVER = 'http://localhost:3001';
 
 let socket;
 
