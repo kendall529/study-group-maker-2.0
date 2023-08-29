@@ -12,11 +12,11 @@ const typeDefs = `
     _id: ID!
     group_name: String!
     group_description: String!
-    topic_id: ID!
+    topic_id: Topic!
     skill_level: String!
     zoom_link: String!
     meet_time: String!
-    created_by: User
+    created_by: User!
   }
 
   type Topic {

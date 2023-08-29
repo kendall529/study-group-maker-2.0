@@ -4,7 +4,7 @@ const resolvers = {
   Query: {
     getUsers: async (parent, args, context) => {
       if (context.user) {
-        return await User.find().populate('groups');
+        return await User.find({}).populate('groups');
       }
       throw AuthenticationError;
     },
