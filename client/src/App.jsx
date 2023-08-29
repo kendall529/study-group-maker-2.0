@@ -5,6 +5,8 @@ import {
   BrowserRouter as Router, Link, useLocation
 } from 'react-router-dom';
 
+import { Outlet } from 'react-router-dom';
+import Nav from './components/NavTabs';
 
 function App() {
 
@@ -14,7 +16,11 @@ function App() {
 
   return (
     <Router>
-        <Nav />
+        <navbar>
+        <a id="logo" class="" href="/">Study Group Maker</a>
+          <Nav />
+        </navbar>
+
         <main>
         <Outlet />
         </main>
