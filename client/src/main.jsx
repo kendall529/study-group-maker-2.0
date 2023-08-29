@@ -4,6 +4,7 @@ import App from './App.jsx'
 import './index.css'
 import { Provider } from 'react-redux';
 import store from './store/store.js';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Contact from './pages/Contact';
 import Groups from './pages/Groups';
@@ -46,9 +47,5 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-)
+  <RouterProvider router={router} />
+);
