@@ -39,7 +39,7 @@ const typeDefs = `
     getUsers: [User]
     getUser: User
     getGroups: [Group]
-    getGroup: Group
+    getGroup(group_id: ID!): Group
     getTopics: [Topic]
   }
 
