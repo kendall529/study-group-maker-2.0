@@ -15,7 +15,7 @@ const Groups = () => {
   
     return (
         <div>
-          <div>
+          {/*<div>
             {loading || loading2 ? (
               <div>Loading...</div>
             ) : (
@@ -25,13 +25,8 @@ const Groups = () => {
             />
           )}
           </div>
+            */}
         </div>
     );
   };
-*/}
-return (
-  <div>
-  </div>
-) 
-}
 export default Groups;

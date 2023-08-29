@@ -16,24 +16,16 @@ function NavTabs() {
           </Link>
         </li>
         <li className="nav-item">
-          <Link 
-            to=".creators"
-          >
-            Creators
-          </Link>
+          <a href="#creators">Creators</a>
         </li>
         <li className="nav-item">
-          <Link 
-            to=".about"
-          >
-            About
-          </Link>
+          <a href="#about">About Us</a>
         </li>
         <li className="nav-item">
           <Link
             to="/Groups"
             // Checks if the groups page is the current page
-            className={currentPage === '/About' ? 'nav-link active' : 'nav-link'}
+            className={currentPage === '/Groups' ? 'nav-link active' : 'nav-link'}
           >
             Groups
           </Link>
