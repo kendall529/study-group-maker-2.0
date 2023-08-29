@@ -24,9 +24,10 @@ const userSchema = new Schema(
 			type: String,
 			required: true,
 		},
-		groups: {
-			
-		}
+		groups: [{
+			type: Schema.Types.ObjectId,
+			ref: 'group',
+		}]
 	},
 	{
 		toJSON: {
