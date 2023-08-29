@@ -13,16 +13,15 @@ function App() {
   }, []);
 
   return (
-    <Router>
-        <navbar>
-        <a id="logo" class="" href="/">Study Group Maker</a>
+        <body>
+          <a href="/">Study Group Maker</a>
           <Nav />
-        </navbar>
 
-        <main>
-         <Outlet />
-        </main>
-    </Router>
+          <main>
+            <Outlet />
+          </main>
+        </body>
+
   )
 }
 
