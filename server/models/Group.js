@@ -30,27 +30,9 @@ const groupSchema = new Schema(
 			type: Schema.Types.ObjectId,
 			ref: 'user',
 		}
-	},
-	{
-	toJSON: {
-      virtuals: true,
-    },
 	}
 );
 
-userSchema.pre('save', async function (next) {
-  if (this.isNew || this.isModified('password')) {
-    const saltRounds = 10;
-    this.password = await bcrypt.hash(this.password, saltRounds);
-  }
+const Group = model('Group', groupSchema);
 
-  next();
-});
-
-userSchema.methods.isCorrectPassword = async function (password) {
-  return bcrypt.compare(password, this.password);
-};
-
-const User = model('User', userSchema);
-
-module.exports = User;
+module.exports = Group;
