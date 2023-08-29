@@ -1,14 +1,13 @@
-import { useQuery } from '@apollo/client';
+//import { useQuery } from '@apollo/client';
 
-import GroupList from '../components/GroupList';
+//import GroupList from '../components/GroupList';
 
-import { QUERY_GROUPS, QUERY_USERS } from '../utils/queries';
+//import { QUERY_GROUPS, QUERY_USERS } from '../utils/queries';
 
 const Groups = () => {
-
-  const { loading, groupData } = useQuery(QUERY_GROUPS);
-  const { loading2, userData } = useQuery(QUERY_USERS);
-
+  
+  // const { loading, groupData } = useQuery(QUERY_GROUPS);
+  // const { loading2, userData } = useQuery(QUERY_USERS);
 
   const groups = groupData?.groups || [];
   const users = userData?.users || [];
@@ -29,5 +28,10 @@ const Groups = () => {
         </div>
     );
   };
-  
+*/}
+return (
+  <div>
+  </div>
+) 
+}
 export default Groups;
