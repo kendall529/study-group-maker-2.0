@@ -22,7 +22,7 @@ function App() {
         </navbar>
 
         <main>
-        <Outlet />
+         <Outlet />
         </main>
     </Router>
   )

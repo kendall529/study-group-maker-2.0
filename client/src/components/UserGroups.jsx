@@ -11,7 +11,7 @@ const UserGroups = ({ groups, users}) => {
                 enrollments.map((group) => (
                     <div class="user-group-list-container">
                         <div id="user-group-list">
-                            {enrollments.user_id}
+                            {group.user_id}
     
                             <div class="user-group-list-card">
                                 <div class="user-group-info">
@@ -40,7 +40,7 @@ const UserGroups = ({ groups, users}) => {
                                         {
                                             users &&
                                                 users.map((user) =>
-                                                <option value="{{id}}">{user.first_name} {user.last_name} | {user.user_name}
+                                                <option value={user.id}>{user.first_name} {user.last_name} | {user.user_name}
                                                 </option>
                                                 )
                                         }
