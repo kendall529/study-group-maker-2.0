@@ -1,15 +1,19 @@
 import GroupForm from '../components/GroupForm';
 import UserGroups from '../components/UserGroups';
 
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import { GET_TOPICS, GET_USER, GET_GROUPS } from '../utils/queries';
 
 const Profile = () => {
+  let { id } = useParams();
 
-   const { loading, userData } = useQuery(GET_USER);
+  const { loading, userData } = useQuery(GET_USER, {
+    variables: { _id: id },
+  });
+
    const { loading2, topicsData } = useQuery(GET_TOPICS);
-   const { loading3, groupsData } = useQuery(GET_GROUPS);
 
   const users = userData?.user || [];
   const topics = topicsData?.topics || [];

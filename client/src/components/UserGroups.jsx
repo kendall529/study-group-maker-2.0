@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const UserGroups = ({ groups, users}) => {
-  if (!groups.length) {
+  if (!groups) {
     return <h3>No Groups Yet</h3>;
   }
 
