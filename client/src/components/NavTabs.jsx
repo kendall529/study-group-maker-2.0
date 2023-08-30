@@ -36,6 +36,7 @@ function NavTabs() {
               </li>
               <li className="nav-item">
 
+
                 <Link
                   to="/#creators"
                   //set the Home page to the active page
@@ -103,6 +104,7 @@ function NavTabs() {
           </div>
         </div>
       </nav>
+       
     );
   }
   
