@@ -16,10 +16,24 @@ function NavTabs() {
           </Link>
         </li>
         <li className="nav-item">
-          <a href="#creators">Creators</a>
+
+          <Link
+            to="/#creators"
+            //set the Home page to the active page
+            className={currentPage === '/' ? 'nav-link active' : 'nav-link'}
+          >
+          Creators
+          </Link>
+          
         </li>
-        <li className="nav-item">
+        <li className="nav-item">     
+          <Link
+            to="/"
+            //set the Home page to the active page
+            className={currentPage === '/' ? 'nav-link active' : 'nav-link'}
+          >
           <a href="#about">About Us</a>
+          </Link>
         </li>
         <li className="nav-item">
           <Link
