@@ -19,6 +19,7 @@ const Login = (props) => {
             ...formState,
             [name]: value,
         });
+        registerNewUser(username);
     }
 
     // submission form
@@ -30,7 +31,6 @@ const Login = (props) => {
         variables: { ...formState },
       });
 
-      registerNewUser(username);
 
       Auth.login(data.login.token);
     } catch (e) {
