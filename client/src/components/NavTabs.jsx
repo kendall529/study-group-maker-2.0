@@ -46,7 +46,7 @@ function NavTabs() {
         </li>
         <li className="nav-item">
           <Link
-            to="/Profile/:id"
+            to="/Profile/:_id"
             // Check to see if the user profile is the current page
             className={currentPage === '/Profile' ? 'nav-link active' : 'nav-link'}
           >
