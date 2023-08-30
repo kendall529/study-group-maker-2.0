@@ -54,7 +54,7 @@ const Home = () => {
                         <div class="creators-box swiper mySwiper">
                             <div class="creators-content swiper-wrapper">
                                 <div class="creators-slide swiper-slide">
-                                    <img src="../images/kendall.png" alt=""/>
+                                    <img src="../assets/images/kendall.png" alt=""/>
                                     <h3>Kendall Smith</h3>
                                     <p>Kendall enjoys being outdoors in his free time doing anything from shooting hoops to kayaking to rock climbing. His education started in health 
                                      sciences but he's now moved into computer sciences. When it comes to work, he prefers to sit at a computer and engineer applications. For breaks, 
@@ -63,7 +63,7 @@ const Home = () => {
                                     </p>
                                 </div>
                                 <div class="creators-slide swiper-slide">
-                                    <img src="../images/tommy.jpg" alt=""/>
+                                    <img src="../assets/images/tommy.jpg" alt=""/>
                                     <h3>Nam Nguyen</h3>
                                     <p>Nam Nguyen graduated from University of Kansas with a Bachelor's degree in Computer Science. He is currently unemployed and joined KU's 
                                     coding bootcamp in hopes of learning more on topics that weren't as touched upon in college. He initially enrolled in Electrical Engineering courses, 
@@ -72,14 +72,14 @@ const Home = () => {
                                     </p>
                                 </div>
                                 <div class="creators-slide swiper-slide">
-                                    <img src="../images/jenny.jpg" alt=""/>
+                                    <img src="../assets/images/jenny.jpg" alt=""/>
                                     <h3>Jennifer Dutton</h3>
                                     <p>Jennifer is a busy mom of seven who loves to code in her spare time. Exploring the world of programming allows her to exercise her creativity 
                                         and problem-solving skills, bringing her ideas to life!
                                     </p>
                                 </div>
                                 <div class="creators-slide swiper-slide">
-                                    <img src="" alt=""/>
+                                    <img src="../assets/images/michaela.jpg" alt=""/>
                                         <h3>Michaela Brown</h3>
                                         <p>Michaela is currently working as a tax agent but looking to start work in programming. A graduate from Washburn University with a minor in
                                             computer science, she found a love for coding and has decided to pursue it further. She finds nothing to be more satisfying than to see a 
