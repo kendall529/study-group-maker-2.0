@@ -1,16 +1,15 @@
-/*import { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-// import { LOGIN_USER } from '../utils/mutations';
+import { LOGIN_USER } from '../utils/mutations';
 
 import { registerNewUser } from '../utils/webSockConnection/webSockConnection';
 
 import Auth from '../utils/auth';
-*/
+
 const Login = (props) => {
-/*
-    const [formState, setFormState] = useState({ email: '', password:''});
-    // const [login, {error, data}] = useMutation(LOGIN_USER);
+    const [formState, setFormState] = useState({ username: '', password:''});
+    const [login, {error, data}] = useMutation(LOGIN_USER);
 
     
     const handleChange = (event) => {
@@ -40,16 +39,15 @@ const Login = (props) => {
 
     // clearing the form
     setFormState({
-      email: '',
+      username: '',
       password: '',
     });
   };
-  */
   return (
       <div className="col-12 col-lg-10">
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2">Login</h4>
-          {/*<div className="card-body">
+          <div className="card-body">
             {data ? (
               <p>
                 Success! You may now head{' '}
@@ -59,10 +57,10 @@ const Login = (props) => {
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
+                  placeholder="Your username"
+                  name="username"
+                  type="username"
+                  value={formState.username}
                   onChange={handleChange}
                 />
                 <input
@@ -89,7 +87,6 @@ const Login = (props) => {
               </div>
             )}
           </div>
-          */}
         </div>
       </div>
   );
