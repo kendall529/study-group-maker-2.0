@@ -51,9 +51,20 @@ db.once("open", () => {
     },
   });
 
+  let peers = [];
+
   io.on("connection", (socket) => {
     socket.emit("connection", null);
     console.log("New user connected.");
-    console.log(socket.io);  // uncomment if needed
+    console.log(socket.id);  // uncomment if needed
+
+    socket.on('register-new-user', (data) => {
+      peers.push({
+        username: data.username,
+        socket: data.socketId
+      });
+      console.log('registered new user');
+      console.log(peers);
+    })
   });
 });
