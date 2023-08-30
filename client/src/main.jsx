@@ -19,7 +19,9 @@ import Groups from './pages/Groups';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
-import SignUp from './pages/Signup';
+import SignUp from './pages/SignUp';
+import Error from './pages/Error';
+import Dashboard from './pages/Dashboard';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -49,6 +51,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <Error />,
     children: [
       {
         index: true,
@@ -67,12 +70,16 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: '/Profile',
+        path: '/Profile/:_id',
         element: <Profile/>,
       },
       {
         path: '/SignUp',
         element: <SignUp/>
+      },
+      {
+        path: '/Dashboard',
+        element: <Dashboard/>
       }
     ],
   },

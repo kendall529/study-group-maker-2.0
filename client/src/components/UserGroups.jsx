@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
 
 const UserGroups = ({ groups, users}) => {
-  if (!groups.length) {
+  if (!groups) {
     return <h3>No Groups Yet</h3>;
   }
 
   return (
         <div class="group-container">
-            {enrollments &&
-                enrollments.map((group) => (
+            {groups &&
+                groups.map((group) => (
                     <div class="user-group-list-container">
                         <div id="user-group-list">
                             {group.user_id}
