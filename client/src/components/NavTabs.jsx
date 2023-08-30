@@ -28,11 +28,11 @@ function NavTabs() {
         </li>
         <li className="nav-item">     
           <Link
-            to="/"
+            to="/#about"
             //set the Home page to the active page
             className={currentPage === '/' ? 'nav-link active' : 'nav-link'}
           >
-          <a href="#about">About Us</a>
+          About Us
           </Link>
         </li>
         <li className="nav-item">

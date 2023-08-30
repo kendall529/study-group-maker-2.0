@@ -7,8 +7,8 @@ const UserGroups = ({ groups, users}) => {
 
   return (
         <div class="group-container">
-            {enrollments &&
-                enrollments.map((group) => (
+            {users &&
+                users.map((group) => (
                     <div class="user-group-list-container">
                         <div id="user-group-list">
                             {group.user_id}
