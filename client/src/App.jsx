@@ -8,12 +8,12 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  createHttpLink,
+  HttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import Nav from './components/NavTabs';
 
-const httpLink = createHttpLink({
+const httpLink = new HttpLink({
   uri: '/graphql',
 });
 
@@ -36,6 +36,7 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
+
 
 function App() {
 
@@ -60,5 +61,7 @@ function App() {
 
   )
 }
+
+
 
 export default App
