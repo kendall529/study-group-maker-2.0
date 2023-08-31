@@ -6,11 +6,11 @@ const Contact = () => {
             <h2 className="mb-6 mt-12 text-white flex justify-center text-2xl font-semibold">Contact Us</h2>
 
             <form id = "contact-form">
-                <div class="input-box mb-6 flex justify-center space-x-2">
+                <div className="input-box mb-6 flex justify-center space-x-2">
                     <input id="name" type="text" placeholder="Full Name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
                     <input id="email" type="email" placeholder="Email Address" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
                 </div>
-                <div class="input-box mb-6 flex justify-center space-x-2">
+                <div className="input-box mb-6 flex justify-center space-x-2">
                     <input id="phone" type="number" placeholder="Mobile Number" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
                     <input id="subject" type="text" placeholder="Email Subject" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
                 </div>
@@ -26,7 +26,6 @@ const Contact = () => {
                   Send Message
                 </button>
                 </div>
-                
             </form>
           </div>
         </div>
