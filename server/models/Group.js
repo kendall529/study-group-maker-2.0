@@ -23,8 +23,8 @@ const groupSchema = new Schema(
             required: true,
         },
         meet_time: {
-            type: Date,
-			default: Date.now,
+            type: String,
+			required: true,
         },
 		created_by: {
 			type: Schema.Types.ObjectId,
