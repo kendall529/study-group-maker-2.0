@@ -12,7 +12,7 @@ const groupSchema = new Schema(
 		},
 		topic_id: {
 			type: Schema.Types.ObjectId,
-			ref: 'topic',
+			ref: 'Topic',
 		},
 		skill_level: {
 			type: String,
@@ -28,7 +28,7 @@ const groupSchema = new Schema(
         },
 		created_by: {
 			type: Schema.Types.ObjectId,
-			ref: 'user',
+			ref: 'User',
 		}
 	}
 );

@@ -38,5 +38,13 @@
       "email": "kendall@mail.com",
       "password": "Password05",
       "groups": []
+  },
+  {
+    "user_name": "michaela000",
+    "first_name": "Michaela",
+    "last_name": "Brown",
+    "email": "michaela@mail.com",
+    "password": "Password07",
+    "groups": []
   }
 ]

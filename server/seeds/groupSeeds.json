@@ -26,5 +26,12 @@
       "skill_level": "intermediate",
       "zoom_link": "www.google.com",
       "meet_time": "8:00 AM CST"
-  }
+  },
+  {
+    "group_name": "testGroup5",
+    "group_description": "Test Description for Group 5",
+    "skill_level": "beginner",
+    "zoom_link": "www.google.com",
+    "meet_time": "10:00 AM CST"
+}
 ]
