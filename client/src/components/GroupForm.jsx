@@ -33,48 +33,48 @@ const GroupForm = ({groups,topics, user, title}) => {
     return (
         <div>
         <div>
-        <h2 class="is-size-2 ml-3">Ready to study, {user.first_name}?!</h2>
+        <h2 className="is-size-2 ml-3">Ready to study, {user.first_name}?!</h2>
       </div>
 
 
       <section id="profile">
-        <h3 class="is-size-3 ml-3 pb-2">Make a Study Group!</h3>
-        <div class="topOfProfile">
-            <div class="profile-container">
-                <div class="formWrapper">
-                    <form class="form" id="create_group" onSubmit={handleFormSubmit}>
+        <h3 className="is-size-3 ml-3 pb-2">Make a Study Group!</h3>
+        <div className="topOfProfile">
+            <div className="profile-container">
+                <div className="formWrapper">
+                    <form className="form" id="create_group" onSubmit={handleFormSubmit}>
                     <div>
-                        <label class="label" for="group_name">Group Name: </label>
-                        <input class="input" type="text" name="group_name" id="group_name"  onChange={handleInputChange}/>
+                        <label className="label" htmlFor="group_name">Group Name: </label>
+                        <input className="input" type="text" name="group_name" id="group_name"  onChange={handleInputChange}/>
                     </div>
                     <div>
-                        <label class="label" for="group_description">Group Description: </label>
-                        <input class="input" type="text" name="group_description" id="group_description" onChange={handleInputChange}/>
+                        <label className="label" htmlFor="group_description">Group Description: </label>
+                        <input className="input" type="text" name="group_description" id="group_description" onChange={handleInputChange}/>
                     </div>
                     <div>
-                        <label class="label" for="topic_id">Topic: </label>
+                        <label className="label" htmlFor="topic_id">Topic: </label>
                         {topics &&
                         topics.map((topic) => (
-                            <select class="select" name="topic_id" id="topic_id" onChange={handleInputChange}>
+                            <select className="select" name="topic_id" id="topic_id" onChange={handleInputChange}>
                             <option value={topic.id}>{topic.name}</option>
                         </select>
                         ))}
                     </div>
                     <div>
-                        <label class="label" for="skill_level">Skill Level: </label>
-                        <select class="select" name="skill_level" id="skill_level" onChange={handleInputChange}>
+                        <label className="label" htmlFor="skill_level">Skill Level: </label>
+                        <select className="select" name="skill_level" id="skill_level" onChange={handleInputChange}>
                             <option value="Beginner">Beginner</option>
                         <   option value="Intermediate">Intermediate</option>
                             <option value="Advanced">Advanced</option>
                         </select>
                     </div>
                     <div>
-                        <label class="label" for="zoom_link">Zoom Link: </label>
-                        <input class="input" type="text" name="zoom_link" id="zoom_link" onChange={handleInputChange}/>
+                        <label className="label" htmlFor="zoom_link">Zoom Link: </label>
+                        <input className="input" type="text" name="zoom_link" id="zoom_link" onChange={handleInputChange}/>
                     </div>
                     <div>
-                        <label class="label" for="meet_half_hour">Meet Time: </label>
-                        <select class="select" name="meet_half_hour" id="meet_half_hour" onChange={handleInputChange}>
+                        <label className="label" htmlFor="meet_half_hour">Meet Time: </label>
+                        <select className="select" name="meet_half_hour" id="meet_half_hour" onChange={handleInputChange}>
                             <option value="1:00">1:00</option>
                             <option value="1:30">1:30</option>
                             <option value="2:00">2:00</option>
@@ -100,11 +100,11 @@ const GroupForm = ({groups,topics, user, title}) => {
                             <option value="12:00">12:00</option>
                             <option value="12:30">12:30</option>
                         </select>
-                        <select class="select" name="meet_am_pm" id="meet_am_pm" onChange={handleInputChange}>
+                        <select className="select" name="meet_am_pm" id="meet_am_pm" onChange={handleInputChange}>
                             <option value="AM">AM</option>
                             <option value="PM">PM</option>
                         </select>
-                        <select class="select" name="meet_timezone" id="meet_timezone" onChange={handleInputChange}>
+                        <select className="select" name="meet_timezone" id="meet_timezone" onChange={handleInputChange}>
                             <option value="CST">CST</option>
                             <option value="MST">MST</option>
                             <option value="PST">CST</option>
@@ -112,13 +112,13 @@ const GroupForm = ({groups,topics, user, title}) => {
 
                         </select>
                     </div>
-                    <button class="button has-background-info-dark has-text-white mt-3" type="submit">Submit</button>
-                    <div id="group-fail" class="has-text-danger"></div>
+                    <button className="button has-background-info-dark has-text-white mt-3" type="submit">Submit</button>
+                    <div id="group-fail" className="has-text-danger"></div>
                     </form>
                 </div>
 
-                <div class="profileImg">
-                    <img class="image" src="../assets/images/group-of-students.jpg"
+                <div className="profileImg">
+                    <img className="image" src="../assets/images/group-of-students.jpg"
                     alt="A group of students at a table studying together."/>
                 </div>
             </div>
