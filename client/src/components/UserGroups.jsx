@@ -29,7 +29,7 @@ const UserGroups = ({ groups, users}) => {
                                             Time to Meet: {group.meet_time}
                                         </p>
                                         <p>
-                                            Created by: {group.user.first_name} {group.user.last_name}
+                                            Created by: {group.created_by.first_name} {group.user.last_name}
                                         </p>
                                     </div>
                                 </div>

@@ -35,7 +35,9 @@ export const ADD_GROUP = gql`
 			skill_level
 			zoom_link
 			meet_time
-			created_by
+			created_by {
+    _id
+  }
     }
   }
 `;
