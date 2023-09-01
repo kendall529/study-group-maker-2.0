@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
 
-const GroupList = ({ groups, users}) => {
-  if (!groups.length) {
+const GroupList = ({ groups }) => {
+  if (!groups) {
     return <h3>No Groups Yet</h3>;
   }
 
   return (
-        <div class="group-container">
+        <div className="group-container">
             {groups &&
                 groups.map((group) => (
-                    <div class="info-card">
+                    <div className="info-card">
                     <h2>
                         <Link to={`/groups/${group.id}`}>
                             {group.group_name}
@@ -17,7 +17,7 @@ const GroupList = ({ groups, users}) => {
                     </h2>
                     <p>Description: {group.group_description}</p>
                     <p>
-                        Study Topic: {group.topic.topic_name}!
+                        Study Topic: {group.topic_id.topic_name}!
                     </p>
                     <p>
                         Skill Level: {group.skill_level}
@@ -26,7 +26,7 @@ const GroupList = ({ groups, users}) => {
                         Time to Meet: {group.meet_time}
                     </p>
                     <p>
-                        Created by: {users.user.first_name} {users.user.last_name}
+                        Created by: {group.created_by.user_name}
                     </p>
                     <p>
                         Meeting Link
@@ -38,7 +38,7 @@ const GroupList = ({ groups, users}) => {
                 <div id= {group.id}>
                     <button className="button has-background-info-dark has-text-white" id="enroll_user">Join Group</button>
                 </div>
-                <div id="enroll-success" className="has-text-success"></div>
+                <div id="enroll-success" classNameName="has-text-success"></div>
 
             </div>
             ))}

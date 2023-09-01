@@ -2,26 +2,24 @@ import { useQuery } from '@apollo/client';
 
 import GroupList from '../components/GroupList';
 
-import { GET_GROUPS, GET_USERS } from '../utils/queries';
+import { GET_GROUPS } from '../utils/queries';
 
 const Groups = () => {
   
-  // const { loading, groupData } = useQuery(GET_GROUPS);
-  const { loading2, userData } = useQuery(GET_USERS);
+  const { loading, data } = useQuery(GET_GROUPS);
 
-  const groups = [];
-  const users = userData?.users || [];
+  const groups = data?.getGroups || [];
 
-  
+  console.log(groups);
+
     return (
         <div>
           <div>
-            {loading2 ? (
+            {loading ? (
               <div>Loading...</div>
             ) : (
               <GroupList
                 groups={groups}
-                users={users}
             />
           )}
           </div>
