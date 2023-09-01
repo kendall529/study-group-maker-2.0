@@ -1,5 +1,5 @@
-// const { Tech, Matchup } = require('../models');
-
+const { Tech, Matchup } = require('../models');
+const { signToken, AuthenticationError } = require('../utils/auth');
 const { Group, User, Topic } = require("../models");
 
 const resolvers = {
@@ -44,10 +44,31 @@ const resolvers = {
 
       return { token, user };
     },
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
-      const token = signToken(user);
-      return { token, user };
+    addUser: async (_, { username, email, password }) => {
+      try {
+        // Check if the email is already in use
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+          throw new Error('Email is already in use');
+        }
+
+        // Create a new user document
+        const newUser = new User({
+          user_name: username,
+          email,
+          password: password,
+        });
+
+        // Save the user to the database
+        await newUser.save();
+
+        const token = signToken(newUser);
+        return { token, newUser };
+
+      } catch (error) {
+        throw error;
+      }
+
     },
     addGroup: async (parent, { group_name, group_description, topic_id, skill_level, zoom_link, meet_time, created_by }) => {
       if (context.user) {
