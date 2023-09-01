@@ -32,49 +32,50 @@ const GroupForm = ({groups,topics, user, title}) => {
 
     return (
         <div>
-        <div>
-        <h2 className="is-size-2 ml-3">Ready to study, {user.first_name}?!</h2>
+        <div className='flex justify-center'>
+        <h2 className="mt-6 mb-2 text-white text-3xl font-semibold">Ready to study, {user.first_name}?!</h2>
       </div>
 
 
       <section id="profile">
-        <h3 className="is-size-3 ml-3 pb-2">Make a Study Group!</h3>
+        <h3 className="mb-6 text-white text-2xl font-medium">Make a Study Group!</h3>
         <div className="topOfProfile">
             <div className="profile-container">
-                <div className="formWrapper">
-                    <form className="form" id="create_group" onSubmit={handleFormSubmit}>
+                <div className="w-full max-w-sm p-4 border border-white rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+                    <form className="space-y-2" id="create_group" onSubmit={handleFormSubmit}>
                     <div>
-                        <label className="label" htmlFor="group_name">Group Name: </label>
-                        <input className="input" type="text" name="group_name" id="group_name"  onChange={handleInputChange}/>
+                        <label className="label block mb-2 text-sm font-medium text-white" for="group_name">Group Name: </label>
+                        <input className="input bg-white border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500" required type="text" name="group_name" id="group_name"  onChange={handleInputChange}/>
                     </div>
                     <div>
-                        <label className="label" htmlFor="group_description">Group Description: </label>
-                        <input className="input" type="text" name="group_description" id="group_description" onChange={handleInputChange}/>
+                        <label className="label block mb-2 text-sm font-medium text-white" for="group_description">Group Description: </label>
+                        <input className="input bg-white border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500" required type="text" name="group_description" id="group_description" onChange={handleInputChange}/>
                     </div>
                     <div>
-                        <label className="label" htmlFor="topic_id">Topic: </label>
+                        <label className="label block mb-2 text-sm font-medium text-white" for="topic_id">Topic: </label>
                         {topics &&
                         topics.map((topic) => (
-                            <select className="select" name="topic_id" id="topic_id" onChange={handleInputChange}>
+                            <select className="select rounded-lg" name="topic_id" id="topic_id" onChange={handleInputChange}>
+
                             <option value={topic.id}>{topic.name}</option>
                         </select>
                         ))}
                     </div>
                     <div>
-                        <label className="label" htmlFor="skill_level">Skill Level: </label>
-                        <select className="select" name="skill_level" id="skill_level" onChange={handleInputChange}>
+                        <label className="label block mb-2 text-sm font-medium text-white" for="skill_level">Skill Level: </label>
+                        <select className="select rounded-lg" name="skill_level" id="skill_level" onChange={handleInputChange}>
                             <option value="Beginner">Beginner</option>
                         <   option value="Intermediate">Intermediate</option>
                             <option value="Advanced">Advanced</option>
                         </select>
                     </div>
                     <div>
-                        <label className="label" htmlFor="zoom_link">Zoom Link: </label>
-                        <input className="input" type="text" name="zoom_link" id="zoom_link" onChange={handleInputChange}/>
+                        <label className="label block mb-2 text-sm font-medium text-white" for="zoom_link">Zoom Link: </label>
+                        <input className="input rounded-lg" type="text" name="zoom_link" id="zoom_link" onChange={handleInputChange}/>
                     </div>
                     <div>
-                        <label className="label" htmlFor="meet_half_hour">Meet Time: </label>
-                        <select className="select" name="meet_half_hour" id="meet_half_hour" onChange={handleInputChange}>
+                        <label className="label block mb-2 text-sm font-medium text-white" for="meet_half_hour">Meet Time: </label>
+                        <select className="select rounded-lg" name="meet_half_hour" id="meet_half_hour" onChange={handleInputChange}>
                             <option value="1:00">1:00</option>
                             <option value="1:30">1:30</option>
                             <option value="2:00">2:00</option>
@@ -100,11 +101,11 @@ const GroupForm = ({groups,topics, user, title}) => {
                             <option value="12:00">12:00</option>
                             <option value="12:30">12:30</option>
                         </select>
-                        <select className="select" name="meet_am_pm" id="meet_am_pm" onChange={handleInputChange}>
+                        <select className="select rounded-lg" name="meet_am_pm" id="meet_am_pm" onChange={handleInputChange}>
                             <option value="AM">AM</option>
                             <option value="PM">PM</option>
                         </select>
-                        <select className="select" name="meet_timezone" id="meet_timezone" onChange={handleInputChange}>
+                        <select className="select rounded-lg" name="meet_timezone" id="meet_timezone" onChange={handleInputChange}>
                             <option value="CST">CST</option>
                             <option value="MST">MST</option>
                             <option value="PST">CST</option>
@@ -112,14 +113,11 @@ const GroupForm = ({groups,topics, user, title}) => {
 
                         </select>
                     </div>
-                    <button className="button has-background-info-dark has-text-white mt-3" type="submit">Submit</button>
-                    <div id="group-fail" className="has-text-danger"></div>
+                    <div className='flex'>
+                    <button className="button text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="submit">Submit</button>
+                    </div>
+                    <div id="group-fail" className="text-red-600"></div>
                     </form>
-                </div>
-
-                <div className="profileImg">
-                    <img className="image" src="../assets/images/group-of-students.jpg"
-                    alt="A group of students at a table studying together."/>
                 </div>
             </div>
 
