@@ -6,6 +6,18 @@ import { ADD_GROUP } from '../utils/mutations';
 const GroupForm = ({groups,topics, user, title}) => {
     const [addGroup, { error }] = useMutation(ADD_GROUP);
 
+    const [formData, setFormData] = useState({
+        group_name: '',
+        group_description: '',
+        topic_id: '',
+        skill_level: 'Beginner', 
+        zoom_link: '',
+        meet_half_hour: '1:00', 
+        meet_am_pm: 'AM', 
+        meet_timezone: 'CST', 
+      });
+    
+
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
@@ -23,11 +35,6 @@ const GroupForm = ({groups,topics, user, title}) => {
         } catch (err) {
           console.error(err);
         }
-    
-        setFormData({
-          tech1: 'JavaScript',
-          tech2: 'JavaScript',
-        });
       };
 
     return (
@@ -44,25 +51,25 @@ const GroupForm = ({groups,topics, user, title}) => {
                 <div className="w-full max-w-sm p-4 border border-white rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
                     <form className="space-y-2" id="create_group" onSubmit={handleFormSubmit}>
                     <div>
-                        <label className="label block mb-2 text-sm font-medium text-white" for="group_name">Group Name: </label>
+                        <label className="label block mb-2 text-sm font-medium text-white" htmlFor="group_name">Group Name: </label>
                         <input className="input bg-white border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500" required type="text" name="group_name" id="group_name"  onChange={handleInputChange}/>
                     </div>
                     <div>
-                        <label className="label block mb-2 text-sm font-medium text-white" for="group_description">Group Description: </label>
+                        <label className="label block mb-2 text-sm font-medium text-white" htmlFor="group_description">Group Description: </label>
                         <input className="input bg-white border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500" required type="text" name="group_description" id="group_description" onChange={handleInputChange}/>
                     </div>
                     <div>
-                        <label className="label block mb-2 text-sm font-medium text-white" for="topic_id">Topic: </label>
-                        {topics &&
-                        topics.map((topic) => (
-                            <select className="select rounded-lg" name="topic_id" id="topic_id" onChange={handleInputChange}>
+                        <label className="label block mb-2 text-sm font-medium text-white" htmlFor="topic_id">Topic: </label>
 
-                            <option value={topic.id}>{topic.name}</option>
+                            <select className="select rounded-lg" name="topic_id" id="topic_id" onChange={handleInputChange}>
+                            {topics &&
+                                topics.map((topic) => (
+                                <option key={topic._id}>{topic.topic_name}</option>
+                                ))}
                         </select>
-                        ))}
                     </div>
                     <div>
-                        <label className="label block mb-2 text-sm font-medium text-white" for="skill_level">Skill Level: </label>
+                        <label className="label block mb-2 text-sm font-medium text-white" htmlFor="skill_level">Skill Level: </label>
                         <select className="select rounded-lg" name="skill_level" id="skill_level" onChange={handleInputChange}>
                             <option value="Beginner">Beginner</option>
                         <   option value="Intermediate">Intermediate</option>
@@ -70,11 +77,11 @@ const GroupForm = ({groups,topics, user, title}) => {
                         </select>
                     </div>
                     <div>
-                        <label className="label block mb-2 text-sm font-medium text-white" for="zoom_link">Zoom Link: </label>
+                        <label className="label block mb-2 text-sm font-medium text-white" htmlFor="zoom_link">Zoom Link: </label>
                         <input className="input rounded-lg" type="text" name="zoom_link" id="zoom_link" onChange={handleInputChange}/>
                     </div>
                     <div>
-                        <label className="label block mb-2 text-sm font-medium text-white" for="meet_half_hour">Meet Time: </label>
+                        <label className="label block mb-2 text-sm font-medium text-white" htmlFor="meet_half_hour">Meet Time: </label>
                         <select className="select rounded-lg" name="meet_half_hour" id="meet_half_hour" onChange={handleInputChange}>
                             <option value="1:00">1:00</option>
                             <option value="1:30">1:30</option>

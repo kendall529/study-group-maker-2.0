@@ -16,7 +16,7 @@ const Profile = () => {
    const getTopicResults = useQuery(GET_TOPICS);
 
   const users = getUserResults.data?.user || [];
-  const topics = getTopicResults.data?.topics || [];
+  const topics = getTopicResults.data?.getTopics || [];
   
     return (
         <div>
