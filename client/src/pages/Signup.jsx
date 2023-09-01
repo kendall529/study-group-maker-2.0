@@ -9,7 +9,7 @@ import Auth from '../utils/auth';
 
 const SignUp = () => {
     const [formState, setFormState] = useState({
-    name: '',
+    user_name: '',
     email: '',
     password: '',
   });
@@ -54,7 +54,7 @@ const SignUp = () => {
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <div className='mb-6 mt-6 flex justify-center'>
-                  <label for="email" className='block mb-6 text-sm font-medium text-gray-900 dark:text-white'></label>
+                  <label htmlFor="email" className='block mb-6 text-sm font-medium text-gray-900 dark:text-white'></label>
                 <input
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/5 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required
                   placeholder="Email"
@@ -65,18 +65,18 @@ const SignUp = () => {
                 />
                 </div>
                 <div className='mb-6 flex justify-center'>
-                  <label for="username" className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'></label>
+                  <label htmlFor="username" className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'></label>
                 <input
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/5 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required
                   placeholder="Username"
-                  name="name"
+                  name="user_name"
                   type="text"
-                  value={formState.name}
+                  value={formState.user_name}
                   onChange={handleChange}
                 />
                 </div>
                 <div className='mb-6 flex justify-center'>
-                  <label for="password" className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'></label>
+                  <label htmlFor="password" className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'></label>
                 <input
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/5 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required
                   placeholder="Password"
