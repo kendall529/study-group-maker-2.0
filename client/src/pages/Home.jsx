@@ -1,3 +1,8 @@
+import tommyImg from "../assets/images/tommy.jpg";
+import kendallImg from "../assets/images/kendall.png";
+import jennyImg from "../assets/images/jenny.jpg";
+import michaelaImg from "../assets/images/michaela.jpg";
+
 const Home = () => {
   
     return (
@@ -18,18 +23,18 @@ const Home = () => {
                 </div> 
             </section>
 
-            <section class="about" id="about">
+            <section className="about" id="about">
                 <div>
-                    <h2 class="heading">About</h2>
+                    <h2 className="heading">About</h2>
                 </div>
-                <div id="about-card-container" class="about-card-container">
-                    <div class="about-card">
+                <div id="about-card-container" className="about-card-container">
+                    <div className="about-card">
                         <h3>Past</h3>
                         <p>It all started with a dream to better understand material from the boot camp.
                         </p>
                     </div>
 
-                    <div class="about-card">
+                    <div className="about-card">
                         <h3>Present</h3>
                         <p>Fast forward to today, now we can proudly show an application capable of
                         organizing study
@@ -37,7 +42,7 @@ const Home = () => {
                         <i><box-icon name='play'></box-icon></i>
                     </div>
 
-                    <div class="about-card">
+                    <div className="about-card">
                         <h3>Future</h3>
                         <p>We hope to host our own chat-rooms and video calls that can then be
                         further customized as
@@ -47,14 +52,14 @@ const Home = () => {
             </section>
 
             <section id="creators">
-                <div class="creators-container">
-                    <h2 class="heading">Our <span>Developers</span></h2>
+                <div className="creators-container">
+                    <h2 className="heading">Our <span>Developers</span></h2>
 
-                    <div class="creators-wrapper">
-                        <div class="creators-box swiper mySwiper">
-                            <div class="creators-content swiper-wrapper">
-                                <div class="creators-slide swiper-slide">
-                                    <img src="../assets/images/kendall.png" alt=""/>
+                    <div className="creators-wrapper">
+                        <div className="creators-box swiper mySwiper">
+                            <div className="creators-content swiper-wrapper">
+                                <div className="creators-slide swiper-slide">
+                                    <img src={kendallImg} alt=""/>
                                     <h3>Kendall Smith</h3>
                                     <p>Kendall enjoys being outdoors in his free time doing anything from shooting hoops to kayaking to rock climbing. His education started in health 
                                      sciences but he's now moved into computer sciences. When it comes to work, he prefers to sit at a computer and engineer applications. For breaks, 
@@ -62,8 +67,8 @@ const Home = () => {
                                      getting faster.
                                     </p>
                                 </div>
-                                <div class="creators-slide swiper-slide">
-                                    <img src="../assets/images/tommy.jpg" alt=""/>
+                                <div className="creators-slide swiper-slide">
+                                    <img src= {tommyImg} alt=""/>
                                     <h3>Nam Nguyen</h3>
                                     <p>Nam Nguyen graduated from University of Kansas with a Bachelor's degree in Computer Science. He is currently unemployed and joined KU's 
                                     coding bootcamp in hopes of learning more on topics that weren't as touched upon in college. He initially enrolled in Electrical Engineering courses, 
@@ -71,15 +76,15 @@ const Home = () => {
                                     built working. He immediately switched over majors.
                                     </p>
                                 </div>
-                                <div class="creators-slide swiper-slide">
-                                    <img src="../assets/images/jenny.jpg" alt=""/>
+                                <div className="creators-slide swiper-slide">
+                                    <img src={jennyImg} alt=""/>
                                     <h3>Jennifer Dutton</h3>
                                     <p>Jennifer is a busy mom of seven who loves to code in her spare time. Exploring the world of programming allows her to exercise her creativity 
                                         and problem-solving skills, bringing her ideas to life!
                                     </p>
                                 </div>
-                                <div class="creators-slide swiper-slide">
-                                    <img src="../assets/images/michaela.jpg" alt=""/>
+                                <div className="creators-slide swiper-slide">
+                                    <img src={michaelaImg} alt=""/>
                                         <h3>Michaela Brown</h3>
                                         <p>Michaela is currently working as a tax agent but looking to start work in programming. A graduate from Washburn University with a minor in
                                             computer science, she found a love for coding and has decided to pursue it further. She finds nothing to be more satisfying than to see a 
@@ -88,9 +93,9 @@ const Home = () => {
                                 </div>
                             </div>
 
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-pagination"></div>
+                            <div className = "swiper-button-next"></div>
+                            <div className ="swiper-button-prev"></div>
+                            <div className ="swiper-pagination"></div>
                         </div>
                     </div>
                 </div>

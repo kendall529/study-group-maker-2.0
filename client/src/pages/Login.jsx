@@ -19,7 +19,7 @@ const Login = (props) => {
             ...formState,
             [name]: value,
         });
-        registerNewUser(username);
+        registerNewUser(name);
     }
 
     // submission form

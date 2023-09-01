@@ -31,7 +31,7 @@ const SignUp = () => {
     console.log(formState);
 
     try {
-      const { data } = await add({
+      const { data } = await addUser({
         variables: { ...formState },
       });
 
@@ -60,7 +60,7 @@ const SignUp = () => {
                   placeholder="Email"
                   name="email"
                   type="email"
-                  value={formState.name}
+                  value={formState.email}
                   onChange={handleChange}
                 />
                 </div>
@@ -71,7 +71,7 @@ const SignUp = () => {
                   placeholder="Username"
                   name="name"
                   type="text"
-                  value={formState.email}
+                  value={formState.name}
                   onChange={handleChange}
                 />
                 </div>

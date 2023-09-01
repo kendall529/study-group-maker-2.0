@@ -36,9 +36,9 @@ const GroupList = ({ groups, users}) => {
                     </p>
                 
                 <div id= {group.id}>
-                    <button class="button has-background-info-dark has-text-white" id="enroll_user">Join Group</button>
+                    <button className="button has-background-info-dark has-text-white" id="enroll_user">Join Group</button>
                 </div>
-                <div id="enroll-success" class="has-text-success"></div>
+                <div id="enroll-success" className="has-text-success"></div>
 
             </div>
             ))}
