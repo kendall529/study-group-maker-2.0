@@ -1,6 +1,6 @@
-// const { Tech, Matchup } = require('../models');
-
 const { Group, User, Topic } = require("../models");
+const { signToken, AuthenticationError } = require('../utils/auth');
+
 
 const resolvers = {
   Query: {
@@ -27,8 +27,8 @@ const resolvers = {
     },
   },
   Mutation: {
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+    login: async (parent, { user_name, password }) => {
+      const user = await User.findOne({ user_name });
 
       if (!user) {
         throw AuthenticationError;
@@ -44,12 +44,12 @@ const resolvers = {
 
       return { token, user };
     },
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    addUser: async (parent, { user_name, first_name, last_name, email, password }) => {
+      const user = await User.create({ user_name, first_name, last_name, email, password, groups: []});
       const token = signToken(user);
       return { token, user };
     },
-    addGroup: async (parent, { group_name, group_description, topic_id, skill_level, zoom_link, meet_time, created_by }) => {
+    addGroup: async (parent, { group_name, group_description, topic_id, skill_level, zoom_link, meet_time, created_by }, context) => {
       if (context.user) {
         const group = await Group.create({ group_name, group_description, topic_id, skill_level, zoom_link, meet_time, created_by });
 
@@ -62,7 +62,7 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    removeGroup: async (parent, { group_id }) => {
+    removeGroup: async (parent, { group_id }, context) => {
       if (context.user) {
         const group = await Group.findOneAndDelete({ id_:group_id });
 
@@ -75,7 +75,7 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    enroll: async (parent, { user_id, group_id }) => {
+    enroll: async (parent, { user_id, group_id }, context) => {
       if (context.user) {
         const user = await User.findOneAndUpdate(
           { _id: group_id },
@@ -85,7 +85,7 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    unEnroll: async (parent, { user_id, group_id }) => {
+    unEnroll: async (parent, { user_id, group_id }, context) => {
       if (context.user) {
         const user = await User.findOneAndUpdate(
           { _id: group_id },

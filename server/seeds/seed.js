@@ -17,18 +17,6 @@ db.once('open', async () => {
 
     await Topic.create(topicSeeds);
 
-    // for (let i = 0; i < thoughtSeeds.length; i++) {
-    //   const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);
-    //   const user = await User.findOneAndUpdate(
-    //     { username: thoughtAuthor },
-    //     {
-    //       $addToSet: {
-    //         thoughts: _id,
-    //       },
-    //     }
-    //   );
-    // }
-
     for (let i=0; i < groupSeeds.length; i++) {
       const randomUser = Math.floor(Math.random() * userSeeds.length);
       const randomTopic = Math.floor(Math.random() * topicSeeds.length);
