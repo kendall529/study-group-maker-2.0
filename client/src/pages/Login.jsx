@@ -2,14 +2,31 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
+import { setUsername } from '../store/actions/dashboardActions';
+import { useDispatch } from 'react-redux';
 
 import { registerNewUser } from '../utils/webSockConnection/webSockConnection';
 
 import Auth from '../utils/auth';
 
+const UsernameInput = ({ currentUsername, updateUsername }) => {
+  return (
+      <input
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/5 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required
+          placeholder="Username"
+          name="username"
+          type="text"
+          value={currentUsername}
+          onChange={(event) => { updateUsername(event.target.value); }}
+      />
+  );
+};
+
 const Login = (props) => {
+    const dispatch = useDispatch();
     const [formState, setFormState] = useState({ username: '', password:''});
     const [login, {error, data}] = useMutation(LOGIN_USER);
+    
 
     
     const handleChange = (event) => {
@@ -33,6 +50,9 @@ const Login = (props) => {
 
 
       Auth.login(data.login.token);
+
+      dispatch(setUsername(formState.username)); // sets username in Redux store
+
     } catch (e) {
       console.error(e);
     }
@@ -57,14 +77,10 @@ const Login = (props) => {
               <form onSubmit={handleFormSubmit}>
                 <div className='mb-6 mt-6 flex justify-center'>
                   <label for="username" className='block mb-6 text-sm font-medium text-gray-900 dark:text-white'></label>
-                <input
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/5 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required
-                  placeholder="Username"
-                  name="username"
-                  type="username"
-                  value={formState.username}
-                  onChange={handleChange}
-                />
+                  <UsernameInput
+                    currentUsername={formState.username}
+                    updateUsername={(newUsername) => setFormState({ ...formState, username: newUsername })}
+                  />
                 </div>
                 <div className='mb-6 flex justify-center'>
                   <label for="password" className='block mb-6 text-sm font-medium text-gray-900 dark:text-white'></label>
