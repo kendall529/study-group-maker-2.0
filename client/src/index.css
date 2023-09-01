@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 body {
-    background-color: #054960;
+    background-color: #1A264C;
     height: 200vh;
+}
+
+#home {
+    background-blend-mode: multiply;
+    background-color: rgba(69, 69, 69, 0.57);
 }
