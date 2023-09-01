@@ -8,16 +8,16 @@ const Home = () => {
     return (
         <div>
           <div>
-            <section className='bg-image bg-cover bg-center h-64' style={{ backgroundImage: "url('src/assets/images/network.jpg')" }} id="home">
+            <section className='bg-image bg-cover bg-center h-64' style={{ backgroundImage: "url('src/assets/images/books.jpg')" }} id="home">
                 <div className="mission-statement-container container mx-auto flex justify-center">
                     <div className="mission-wrapper mt-10 text-center">
-                        <h1 className="mission-statement text-4xl font-bold text-orange-400 mt-2">We want to make it easier for people to
+                        <h1 className="mission-statement text-4xl font-bold text-white mt-2">We want to make it easier for people to
                         study together.</h1>
 
-                        <p className='text-xl font-semibold text-orange-300 italic'>Unlock your potential with our Study Group
+                        <p className='text-xl font-semibold text-white italic'>Unlock your potential with our Study Group
                         Maker and join a community of motivated learners.
                         </p>
-                        <button className='mt-6 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded place-self-center'><a href="/groups">Checkout Some Study Groups</a></button>
+                        <button className='mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded place-self-center'><a href="/groups">Checkout Some Study Groups</a></button>
                     </div>
 
                 </div> 
