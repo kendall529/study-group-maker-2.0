@@ -8,12 +8,12 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  HttpLink,
+  createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import Nav from './components/NavTabs';
 
-const httpLink = new HttpLink({
+const httpLink = createHttpLink({
   uri: '/graphql',
 });
 
@@ -40,9 +40,9 @@ const client = new ApolloClient({
 
 function App() {
 
-  useEffect(() => {
-    connectWithWebSocket();
-  }, []);
+  // useEffect(() => {
+  //   connectWithWebSocket();
+  // }, []);
 
   return (
 

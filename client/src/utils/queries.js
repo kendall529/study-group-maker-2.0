@@ -1,86 +1,110 @@
 import { gql } from '@apollo/client';
 
 export const GET_USERS = gql`
-  query getUsers {
-    user {
+  query GetUsers {
+    getUsers {
       _id
-      username
+      user_name
       first_name
       last_name
       email
       groups {
+        _id
         group_name
         group_description
         topic_id {
-					topic_name
+          topic_name
         }
         skill_level
         zoom_link
         meet_time
-				created_by
+        created_by {
+          _id
+          user_name
+          first_name
+          last_name
+        }
       }
     }
   }
 `;
 
 export const GET_USER = gql`
-  query getUser {
-    user {
+query GetUser {
+  getUser {
+    _id
+    user_name
+    first_name
+    last_name
+    email
+    groups {
       _id
-      username
-      first_name
-      last_name
-      email
-      groups {
-        group_name
-        group_description
-        topic_id {
-					topic_name
-        }
-        skill_level
-        zoom_link
-        meet_time
-				created_by
+      group_name
+      group_description
+      topic_id {
+        topic_name
+      }
+      skill_level
+      zoom_link
+      meet_time
+      created_by {
+        _id
+        user_name
+        first_name
+        last_name
+      }
+    }
+  }
+}
+`;
+
+export const GET_GROUPS = gql`
+  query GetGroups {
+    getGroups {
+      _id
+      group_name
+      group_description
+      topic_id {
+        topic_name
+      }
+      skill_level
+      zoom_link
+      meet_time
+      created_by {
+        _id
+        user_name
+        first_name
+        last_name
       }
     }
   }
 `;
 
-export const GET_GROUPS = gql`
-  query getGroups {
-		group {
-			group_name
-			group_description
-			topic_id {
-				topic_name
-			}
-			skill_level
-			zoom_link
-			meet_time
-			created_by
-		}
-  }
-`;
-
 export const GET_GROUP = gql`
-  query getGroup($_id: ID!) {
-		group(_id: $_id) {
-			group_name
-			group_description
-			topic_id {
-				topic_name
-			}
-			skill_level
-			zoom_link
-			meet_time
-			created_by
-		}
+  query GetGroup($_id: ID!) {
+		getGroup(_id: $_id) {
+      _id
+      group_name
+      group_description
+      topic_id {
+        topic_name
+      }
+      skill_level
+      zoom_link
+      meet_time
+      created_by {
+        _id
+        user_name
+        first_name
+        last_name
+      }
+    }
   }
 `;
 
 export const GET_TOPICS = gql`
-  query getTopics {
-		topic {
+  query GetTopics {
+		getTopics {
 			topic_name
 		}
   }
