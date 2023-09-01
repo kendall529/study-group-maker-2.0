@@ -5,22 +5,25 @@ const { Group, User, Topic } = require("../models");
 const resolvers = {
   Query: {
     getUsers: async (parent, args, context) => {
-      return await User.find({}).populate('groups');
+      return await User.find({}).populate('groups').populate({
+        path: 'groups',
+        populate: ['topic_id', 'created_by']
+      });
     },
     getUser: async (parent, args, context) => {
-      return await User.findOne({ _id: context.user._id }).populate('groups');
+      return await User.findOne({ _id: context.user._id }).populate('groups').populate({
+        path: 'groups',
+        populate: ['topic_id', 'created_by']
+      });
     },
     getGroups: async (parent, args, context) => {
-      return await Group.find({});
+      return await Group.find({}).populate('created_by').populate('topic_id');
     },
     getGroup: async (parent, args, context) => {
-      return await Group.findOne({ _id: args.group_id});
+      return await Group.findOne({ _id: args.group_id}).populate('created_by').populate('topic_id');
     },
     getTopics: async (parent, args, context) => {
-      if (context.user) {
         return await Topic.find({});
-      }
-      throw AuthenticationError;
     },
   },
   Mutation: {
