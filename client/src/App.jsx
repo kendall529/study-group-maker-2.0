@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { connectWithWebSocket } from './utils/webSockConnection/webSockConnection'
 import React from 'react';
+import { Provider } from 'react-redux';
+import store from './store/store';
 import {
   BrowserRouter as Router, Link, useLocation, Outlet
 } from 'react-router-dom';
@@ -41,23 +43,24 @@ const client = new ApolloClient({
 
 function App() {
 
-  // useEffect(() => {
-  //   connectWithWebSocket();
-  // }, []);
+  useEffect(() => {
+    connectWithWebSocket();
+  }, []);
 
   return (
 
+    <Provider store={store}>
+        <ApolloProvider client={client}>
+              <div>
+                <a href="/">Study Group Maker</a>
+                <Nav />
 
-    <ApolloProvider client={client}>
-          <div>
-            <a href="/">Study Group Maker</a>
-            <Nav />
-
-            <main>  
-              <Outlet />
-            </main>
-          </div>
-    </ApolloProvider>
+                <main>  
+                  <Outlet />
+                </main>
+              </div>
+        </ApolloProvider>
+    </Provider>
 
 
   )
