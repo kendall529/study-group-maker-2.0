@@ -76,7 +76,7 @@ const Login = (props) => {
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <div className='mb-6 mt-6 flex justify-center'>
-                  <label for="username" className='block mb-6 text-sm font-medium text-gray-900 dark:text-white'></label>
+                  <label htmlFor="username" className='block mb-6 text-sm font-medium text-gray-900 dark:text-white'></label>
                   <UsernameInput
                     currentUsername={formState.username}
                     updateUsername={(newUsername) => setFormState({ ...formState, user_name: newUsername })}
