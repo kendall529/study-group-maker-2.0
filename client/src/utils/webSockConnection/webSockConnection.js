@@ -15,7 +15,6 @@ export const connectWithWebSocket = () => {
 
 export const registerNewUser = (user_name) => {
     if (socket && socket.connected) {
-        console.log("Emitting register-new-user event for user: ", user_name);  // Debug line
         socket.emit('register-new-user', {
             username: user_name,
             socketId: socket.id
