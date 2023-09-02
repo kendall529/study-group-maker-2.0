@@ -25,16 +25,16 @@ const Home = () => {
 
             <section className="about" id="about">
                 <div>
-                    <h2 className="heading">About</h2>
+                    <h2 className="text-gray-400 text-5xl font-semibold flex justify-center">About</h2>
                 </div>
                 <div id="about-card-container" className="about-card-container">
-                    <div className="about-card">
+                    <div className="about-card text-gray-400">
                         <h3>Past</h3>
                         <p>It all started with a dream to better understand material from the boot camp.
                         </p>
                     </div>
 
-                    <div className="about-card">
+                    <div className="about-card text-gray-400">
                         <h3>Present</h3>
                         <p>Fast forward to today, now we can proudly show an application capable of
                         organizing study
@@ -42,7 +42,7 @@ const Home = () => {
                         <i><box-icon name='play'></box-icon></i>
                     </div>
 
-                    <div className="about-card">
+                    <div className="about-card text-gray-400">
                         <h3>Future</h3>
                         <p>We hope to host our own chat-rooms and video calls that can then be
                         further customized as
@@ -105,5 +105,5 @@ const Home = () => {
         </div>
     );
   };
-  
+
 export default Home;
