@@ -3,7 +3,7 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 
 
 const resolvers = {
-  Query: {
+  Query: {   
     getUsers: async (parent, args, context) => {
       return await User.find({}).populate('groups').populate({
         path: 'groups',
@@ -44,6 +44,7 @@ const resolvers = {
 
       return { token, user };
     },
+
     addUser: async (_, { username, email, password }) => {
       try {
         // Check if the email is already in use
