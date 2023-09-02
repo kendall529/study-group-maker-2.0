@@ -46,7 +46,7 @@ const typeDefs = `
   type Mutation {
     login(user_name: String!, password: String!): Auth
     addUser(user_name: String!, email: String!, password: String!): Auth
-    addGroup(group_name: String!, group_description: String!, topic_id: ID!, skill_level: String!, zoom_link: String!, meet_time: String!, created_by: ID!): Group
+    addGroup(group_name: String!, group_description: String!, topic_id: ID!, skill_level: String!, zoom_link: String!, meet_time: String!): Group
     removeGroup(group_id: ID!): Group
     enroll(user_id: ID!, group_id: ID!): User
     unEnroll(user_id: ID!, group_id: ID!): User

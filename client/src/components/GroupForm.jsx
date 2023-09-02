@@ -29,9 +29,11 @@ const GroupForm = ({groups,topics, user, title}) => {
       const handleFormSubmit = async (event) => {
         event.preventDefault();
     
+        console.log(formData);
+
         try {
           const { data } = await addGroup({
-            variables: { ...formData, created_by: token },
+            variables: { ...formData },
           });
     
           navigate(`/groups/${data.addGroup._id}`);
@@ -39,6 +41,7 @@ const GroupForm = ({groups,topics, user, title}) => {
           console.error(err);
         }
       };
+
 
     return (
         <div>
@@ -67,7 +70,7 @@ const GroupForm = ({groups,topics, user, title}) => {
                             <select className="select rounded-lg" name="topic_id" id="topic_id" onChange={handleInputChange}>
                             {topics &&
                                 topics.map((topic) => (
-                                <option key={topic._id}>{topic.topic_name}</option>
+                                <option value={topic._id}>{topic.topic_name}</option>
                                 ))}
                         </select>
                     </div>
@@ -86,30 +89,30 @@ const GroupForm = ({groups,topics, user, title}) => {
                     <div>
                         <label className="label block mb-2 text-sm font-medium text-white" htmlFor="meet_half_hour">Meet Time: </label>
                         <select className="select rounded-lg" name="meet_time" id="meet_time" onChange={handleInputChange}>
-                            <option value="1:00">1:00 PM CST</option>
-                            <option value="1:30">1:30 PM CST</option>
-                            <option value="2:00">2:00 PM CST</option>
-                            <option value="2:30">2:30 PM CST</option>
-                            <option value="3:00">3:00 PM CST</option>
-                            <option value="3:30">3:30 PM CST</option>
-                            <option value="4:00">4:00 PM CST</option>
-                            <option value="4:30">4:30 PM CST</option>
-                            <option value="5:00">5:00 PM CST</option>
-                            <option value="5:30">5:30 PM CST</option>
-                            <option value="6:00">6:00 PM CST</option>
-                            <option value="6:30">6:30 PM CST</option>
-                            <option value="7:00">7:00 PM CST</option>
-                            <option value="7:30">7:30 PM CST</option>
-                            <option value="8:00">8:00 PM CST</option>
-                            <option value="8:30">8:30 PM CST</option>
-                            <option value="9:00">9:00 AM CST</option>
-                            <option value="9:30">9:30 AM CST</option>
-                            <option value="10:00">10:00 AM CST</option>
-                            <option value="10:30">10:30 AM CST</option>
-                            <option value="11:00">11:00 AM CST</option>
-                            <option value="11:30">11:30 AM CST</option>
-                            <option value="12:00">12:00 PM CST</option>
-                            <option value="12:30">12:30 PM CST</option>
+                            <option value="1:00 PM CST">1:00 PM CST</option>
+                            <option value="1:30 PM CST">1:30 PM CST</option>
+                            <option value="2:00 PM CST">2:00 PM CST</option>
+                            <option value="2:30 PM CST">2:30 PM CST</option>
+                            <option value="3:00 PM CST">3:00 PM CST</option>
+                            <option value="3:30 PM CST">3:30 PM CST</option>
+                            <option value="4:00 PM CST">4:00 PM CST</option>
+                            <option value="4:30 PM CST">4:30 PM CST</option>
+                            <option value="5:00 PM CST">5:00 PM CST</option>
+                            <option value="5:30 PM CST">5:30 PM CST</option>
+                            <option value="6:00 PM CST">6:00 PM CST</option>
+                            <option value="6:30 PM CST">6:30 PM CST</option>
+                            <option value="7:00 PM CST">7:00 PM CST</option>
+                            <option value="7:30 PM CST">7:30 PM CST</option>
+                            <option value="8:00 PM CST">8:00 PM CST</option>
+                            <option value="8:30 PM CST">8:30 PM CST</option>
+                            <option value="9:00 AM CST">9:00 AM CST</option>
+                            <option value="9:30 AM CST">9:30 AM CST</option>
+                            <option value="10:00 AM CST">10:00 AM CST</option>
+                            <option value="10:30 AM CST">10:30 AM CST</option>
+                            <option value="11:00 AM CST">11:00 AM CST</option>
+                            <option value="11:30 AM CST">11:30 AM CST</option>
+                            <option value="12:00 AM CST">12:00 PM CST</option>
+                            <option value="12:30 AM CST">12:30 PM CST</option>
                         </select>
                     </div>
                     <div className='flex'>
