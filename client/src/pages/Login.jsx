@@ -44,7 +44,14 @@ const Login = (props) => {
     const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log("Submitting form with state: ", formState);  // Debug line
+    console.log("Type of user_name:", typeof formState.user_name);
+    console.log("Type of password:", typeof formState.password);
+
     try {
+      dispatch(setUsername(formState.user_name)); // sets username in Redux store
+      console.log('Dispatched username to Redux'); // Debug line
+      registerNewUser(formState.user_name);
+      
       console.log('attempting login ...');
       const { data } = await login({
         variables: { ...formState },
@@ -54,9 +61,6 @@ const Login = (props) => {
 
       Auth.login(data.login.token);
 
-      dispatch(setUsername(formState.user_name)); // sets username in Redux store
-      console.log('Dispatched username to Redux'); // Debug line
-      registerNewUser(formState.user_name);
 
     } catch (e) {
       console.error('error during login', e);
