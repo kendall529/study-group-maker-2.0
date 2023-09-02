@@ -36,6 +36,7 @@ const SignUp = () => {
       });
 
       Auth.login(data.addProfile.token);
+      Auth.loggedIn = true;
     } catch (e) {
       console.error(e);
     }
