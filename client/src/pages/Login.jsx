@@ -24,7 +24,7 @@ const UsernameInput = ({ currentUsername, updateUsername }) => {
 
 const Login = (props) => {
     const dispatch = useDispatch();
-    const [formState, setFormState] = useState({ username: '', password:''});
+    const [formState, setFormState] = useState({ user_name: '', password:''});
     const [login, {error, data}] = useMutation(LOGIN_USER);
     
 
@@ -51,7 +51,7 @@ const Login = (props) => {
 
       Auth.login(data.login.token);
 
-      dispatch(setUsername(formState.username)); // sets username in Redux store
+      dispatch(setUsername(formState.user_name)); // sets username in Redux store
 
     } catch (e) {
       console.error(e);
@@ -79,7 +79,7 @@ const Login = (props) => {
                   <label for="username" className='block mb-6 text-sm font-medium text-gray-900 dark:text-white'></label>
                   <UsernameInput
                     currentUsername={formState.username}
-                    updateUsername={(newUsername) => setFormState({ ...formState, username: newUsername })}
+                    updateUsername={(newUsername) => setFormState({ ...formState, user_name: newUsername })}
                   />
                 </div>
                 <div className='mb-6 flex justify-center'>
