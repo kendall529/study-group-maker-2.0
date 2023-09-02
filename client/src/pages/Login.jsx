@@ -17,7 +17,9 @@ const UsernameInput = ({ currentUsername, updateUsername }) => {
           name="user_name"
           type="text"
           value={currentUsername}
-          onChange={(event) => { updateUsername(event.target.value); }}
+          onChange={(event) => { 
+            console.log("Username input change: ", event.target.value);
+            updateUsername(event.target.value); }}
       />
   );
 };
@@ -36,30 +38,33 @@ const Login = (props) => {
             ...formState,
             [name]: value,
         });
-        registerNewUser(name);
     }
 
     // submission form
     const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+    console.log("Submitting form with state: ", formState);  // Debug line
     try {
+      console.log('attempting login ...');
       const { data } = await login({
         variables: { ...formState },
       });
+      console.log("Login successful, data:", data);  // Debug line
 
 
       Auth.login(data.login.token);
 
       dispatch(setUsername(formState.user_name)); // sets username in Redux store
+      console.log('Dispatched username to Redux'); // Debug line
+      registerNewUser(formState.user_name);
 
     } catch (e) {
-      console.error(e);
+      console.error('error during login', e);
     }
 
     // clearing the form
     setFormState({
-      username: '',
+      user_name: '',
       password: '',
     });
   };
@@ -76,9 +81,9 @@ const Login = (props) => {
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <div className='mb-6 mt-6 flex justify-center'>
-                  <label htmlFor="username" className='block mb-6 text-sm font-medium text-gray-900 dark:text-white'></label>
+                  <label htmlFor="user_name" className='block mb-6 text-sm font-medium text-gray-900 dark:text-white'></label>
                   <UsernameInput
-                    currentUsername={formState.username}
+                    currentUsername={formState.user_name}
                     updateUsername={(newUsername) => setFormState({ ...formState, user_name: newUsername })}
                   />
                 </div>

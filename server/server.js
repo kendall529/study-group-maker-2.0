@@ -68,7 +68,7 @@ const startApolloServer = async () => {
 
       socket.on('register-new-user', (data) => {
         peers.push({
-          username: data.username,
+          username: data.user_name,
           socket: data.socketId
         });
         console.log('registered new user');
