@@ -105,6 +105,7 @@ export const GET_GROUP = gql`
 export const GET_TOPICS = gql`
   query GetTopics {
 		getTopics {
+      _id
 			topic_name
 		}
   }

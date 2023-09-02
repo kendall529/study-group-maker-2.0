@@ -71,12 +71,12 @@ const resolvers = {
       }
 
     },
-    addGroup: async (parent, { group_name, group_description, topic_id, skill_level, zoom_link, meet_time, created_by }, context) => {
+    addGroup: async (parent, { group_name, group_description, topic_id, skill_level, zoom_link, meet_time }, context) => {
       if (context.user) {
-        const group = await Group.create({ group_name, group_description, topic_id, skill_level, zoom_link, meet_time, created_by });
+        const group = await Group.create({ group_name, group_description, topic_id, skill_level, zoom_link, meet_time, created_by: context.user._id });
 
         await User.findOneAndUpdate(
-          { _id: created_by },
+          { _id: context.user._id},
           { $addToSet: { groups: group._id } }
         );
 

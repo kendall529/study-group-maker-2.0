@@ -1,9 +1,13 @@
 import { useState } from 'react';
+import Auth from '../utils/auth';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_GROUP } from '../utils/mutations';
 
 const GroupForm = ({groups,topics, user, title}) => {
+
+    const token = Auth.getToken();
+
     const [addGroup, { error }] = useMutation(ADD_GROUP);
 
     const [formData, setFormData] = useState({
@@ -12,9 +16,8 @@ const GroupForm = ({groups,topics, user, title}) => {
         topic_id: '',
         skill_level: 'Beginner', 
         zoom_link: '',
-        meet_half_hour: '1:00', 
-        meet_am_pm: 'AM', 
-        meet_timezone: 'CST', 
+        meet_time: '1:00 PM CST', 
+
       });
     
 
@@ -26,6 +29,8 @@ const GroupForm = ({groups,topics, user, title}) => {
       const handleFormSubmit = async (event) => {
         event.preventDefault();
     
+        console.log(formData);
+
         try {
           const { data } = await addGroup({
             variables: { ...formData },
@@ -36,6 +41,7 @@ const GroupForm = ({groups,topics, user, title}) => {
           console.error(err);
         }
       };
+
 
     return (
         <div>
@@ -64,7 +70,7 @@ const GroupForm = ({groups,topics, user, title}) => {
                             <select className="select rounded-lg" name="topic_id" id="topic_id" onChange={handleInputChange}>
                             {topics &&
                                 topics.map((topic) => (
-                                <option key={topic._id}>{topic.topic_name}</option>
+                                <option value={topic._id}>{topic.topic_name}</option>
                                 ))}
                         </select>
                     </div>
@@ -82,42 +88,31 @@ const GroupForm = ({groups,topics, user, title}) => {
                     </div>
                     <div>
                         <label className="label block mb-2 text-sm font-medium text-white" htmlFor="meet_half_hour">Meet Time: </label>
-                        <select className="select rounded-lg" name="meet_half_hour" id="meet_half_hour" onChange={handleInputChange}>
-                            <option value="1:00">1:00</option>
-                            <option value="1:30">1:30</option>
-                            <option value="2:00">2:00</option>
-                            <option value="2:30">2:30</option>
-                            <option value="3:00">3:00</option>
-                            <option value="3:30">3:30</option>
-                            <option value="4:00">4:00</option>
-                            <option value="4:30">4:30</option>
-                            <option value="5:00">5:00</option>
-                            <option value="5:30">5:30</option>
-                            <option value="6:00">6:00</option>
-                            <option value="6:30">6:30</option>
-                            <option value="7:00">7:00</option>
-                            <option value="7:30">7:30</option>
-                            <option value="8:00">8:00</option>
-                            <option value="8:30">8:30</option>
-                            <option value="9:00">9:00</option>
-                            <option value="9:30">9:30</option>
-                            <option value="10:00">10:00</option>
-                            <option value="10:30">10:30</option>
-                            <option value="11:00">11:00</option>
-                            <option value="11:30">11:30</option>
-                            <option value="12:00">12:00</option>
-                            <option value="12:30">12:30</option>
-                        </select>
-                        <select className="select rounded-lg" name="meet_am_pm" id="meet_am_pm" onChange={handleInputChange}>
-                            <option value="AM">AM</option>
-                            <option value="PM">PM</option>
-                        </select>
-                        <select className="select rounded-lg" name="meet_timezone" id="meet_timezone" onChange={handleInputChange}>
-                            <option value="CST">CST</option>
-                            <option value="MST">MST</option>
-                            <option value="PST">CST</option>
-                            <option value="EST">EST</option>
-
+                        <select className="select rounded-lg" name="meet_time" id="meet_time" onChange={handleInputChange}>
+                            <option value="1:00 PM CST">1:00 PM CST</option>
+                            <option value="1:30 PM CST">1:30 PM CST</option>
+                            <option value="2:00 PM CST">2:00 PM CST</option>
+                            <option value="2:30 PM CST">2:30 PM CST</option>
+                            <option value="3:00 PM CST">3:00 PM CST</option>
+                            <option value="3:30 PM CST">3:30 PM CST</option>
+                            <option value="4:00 PM CST">4:00 PM CST</option>
+                            <option value="4:30 PM CST">4:30 PM CST</option>
+                            <option value="5:00 PM CST">5:00 PM CST</option>
+                            <option value="5:30 PM CST">5:30 PM CST</option>
+                            <option value="6:00 PM CST">6:00 PM CST</option>
+                            <option value="6:30 PM CST">6:30 PM CST</option>
+                            <option value="7:00 PM CST">7:00 PM CST</option>
+                            <option value="7:30 PM CST">7:30 PM CST</option>
+                            <option value="8:00 PM CST">8:00 PM CST</option>
+                            <option value="8:30 PM CST">8:30 PM CST</option>
+                            <option value="9:00 AM CST">9:00 AM CST</option>
+                            <option value="9:30 AM CST">9:30 AM CST</option>
+                            <option value="10:00 AM CST">10:00 AM CST</option>
+                            <option value="10:30 AM CST">10:30 AM CST</option>
+                            <option value="11:00 AM CST">11:00 AM CST</option>
+                            <option value="11:30 AM CST">11:30 AM CST</option>
+                            <option value="12:00 AM CST">12:00 PM CST</option>
+                            <option value="12:30 AM CST">12:30 PM CST</option>
                         </select>
                     </div>
                     <div className='flex'>

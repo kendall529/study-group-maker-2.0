@@ -7,11 +7,10 @@ const UserGroups = ({ groups, users}) => {
 
   return (
         <div class="group-container">
-            {groups &&
-                groups.map((group) => (
+            {users.groups &&
+                users.groups.map((group) => (
                     <div class="user-group-list-container">
                         <div id="user-group-list">
-                            {group.user_id}
     
                             <div class="user-group-list-card">
                                 <div class="user-group-info">
@@ -29,7 +28,7 @@ const UserGroups = ({ groups, users}) => {
                                             Time to Meet: {group.meet_time}
                                         </p>
                                         <p>
-                                            Created by: {group.created_by.first_name} {group.user.last_name}
+                                            Created by: {group.created_by.user_name}
                                         </p>
                                     </div>
                                 </div>
@@ -38,9 +37,9 @@ const UserGroups = ({ groups, users}) => {
                                         <label class="label" for="user_names">Add User: </label>
                                         <select class="select user_names" name="user_names">
                                         {
-                                            users &&
-                                                users.map((user) =>
-                                                <option value={user.id}>{user.first_name} {user.last_name} | {user.user_name}
+                                            group.users &&
+                                                group.users.map((user) =>
+                                                <option value={user.id}>{user.user_name}
                                                 </option>
                                                 )
                                         }

@@ -21,8 +21,8 @@ mutation addUser($user_name: String!, $password: String!, $email: String!) {
 `;
 
 export const ADD_GROUP = gql`
-  mutation addGroup($group_name: String!, $group_description: String!, $topic_id: ID!, $skill_level: String!, $zoom_link: String!, $meet_time: String!, $created_by: ID!) {
-    addGroup(group_name: $group_name, group_description: $group_description, topic_id: $topic_id, skill_level: $skill_level, zoom_link: $zoom_link, meet_time: $meet_time, created_by: $created_by) {
+  mutation addGroup($group_name: String!, $group_description: String!, $topic_id: ID!, $skill_level: String!, $zoom_link: String!, $meet_time: String!) {
+    addGroup(group_name: $group_name, group_description: $group_description, topic_id: $topic_id, skill_level: $skill_level, zoom_link: $zoom_link, meet_time: $meet_time) {
 			group_name
 			group_description
 			topic_id {
