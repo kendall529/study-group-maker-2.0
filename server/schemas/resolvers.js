@@ -45,7 +45,7 @@ const resolvers = {
       return { token, user };
     },
 
-    addUser: async (_, { username, email, password }) => {
+    addUser: async (_, { user_name, email, password }) => {
       try {
         // Check if the email is already in use
         const existingUser = await User.findOne({ email });
@@ -55,7 +55,7 @@ const resolvers = {
 
         // Create a new user document
         const newUser = new User({
-          user_name: username,
+          user_name: user_name,
           email,
           password: password,
         });
@@ -69,6 +69,7 @@ const resolvers = {
       } catch (error) {
         throw error;
       }
+
     },
     addGroup: async (parent, { group_name, group_description, topic_id, skill_level, zoom_link, meet_time, created_by }, context) => {
       if (context.user) {
