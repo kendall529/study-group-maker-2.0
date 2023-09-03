@@ -8,7 +8,7 @@
 ## **Description**
 Feeling stuck on your latest computer science assignment? Wanting to brush up on some content from earlier in the course before the final project? Looking to build up a strong network of peers with similar work ethic and career goals? If so, then the Study Group Maker application was built for you! 
 
-![A screenshot of the landing page for Study Group Maker](./assets/images/homepage.png)
+![A screenshot of the landing page for Study Group Maker](./src/assets/images/homepage.png)
 
 Study Group Maker allows users to:
 - Create an account so their information is private and organized just for them
@@ -34,7 +34,7 @@ Study groups are also set at a distinct time, and have a field to provide a meet
 
 
 
-![A screenshot of the "about" section](./assets/images/about.png)
+![A screenshot of the "about" section](./src/assets/images/about.png)
 
 
 
@@ -88,5 +88,5 @@ If you have further questions, we can be contacted at any of the following links
 
 **Michaela Brown** 
 - (https://github.com/MichaelaRB)
-- 
--  
+- (https://www.linkedin.com/in/michaela-brown-b89544281/)
+- (michaelarbrown4@gmail.com)
