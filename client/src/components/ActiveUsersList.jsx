@@ -1,31 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ActiveUsersListItem from './ActiveUsersListItem';
 import { connect } from 'react-redux';
+import { requestActiveUsers } from '../utils/webSockConnection/webSockConnection';
 
-// const activeUsers = [
-//     {
-//         socketId: 331,
-//         username: 'Kendall529'
-//     },
-//     {
-//         socketId: 341,
-//         username: 'John316'
-//     },
-//     {
-//         socketId: 361,
-//         username: 'Tim223'
-//     },
-//     {
-//         socketId: 431,
-//         username: 'Tara973'
-//     },
-//     {
-//         socketId: 621,
-//         username: 'Vince720'
-//     },
-// ];
+const ActiveUsersList = ({ activeUsers, socket }) => {
 
-const ActiveUsersList = ({ activeUsers }) => {
+    useEffect(() => {
+        requestActiveUsers();
+    }, []);
+
+    if(!Array.isArray(activeUsers)) {
+        return <div>No active users</div>
+    }
+
     return (
         <div className='active-user-list-container'>
             {activeUsers.map((activeUser) => 
@@ -38,6 +25,7 @@ const ActiveUsersList = ({ activeUsers }) => {
 };
 
 const mapStateToProps = ({ dashboard }) => ({
+
     ...dashboard
 });
 

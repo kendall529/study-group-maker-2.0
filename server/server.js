@@ -64,26 +64,37 @@ const startApolloServer = async () => {
     const broadcastEventTypes = {
       ACTIVE_USERS: 'ACTIVE_USERS',
       GROUP_CALL_ROOMS: 'GROUP_CALL_ROOMS'
-    }
+    };
 
     io.on("connection", (socket) => {
       socket.emit("connection", null);
       console.log("New user connected.");
       console.log(socket.id);  // uncomment if needed
 
-      socket.on('register-new-user', (data) => {
-        peers.push({
-          username: data.username,
-          socket: data.socketId
-        });
-        console.log('registered new user');
-        console.log(peers);
-
+      // listens for 'request-active-users' event
+      socket.on('request-active-users', () => {
+        // emit active users list
         io.sockets.emit('broadcast', {
           event: broadcastEventTypes.ACTIVE_USERS,
           activeUsers: peers
         });
       });
+      
+      socket.on('register-new-user', (data) => {
+        peers.push({
+          user_name: data.username,
+          socketId: data.socketId
+        });
+        console.log('registered new user');
+        console.log(peers);
+
+        console.log('emitting broadcast for active users.');
+        io.sockets.emit('broadcast', {
+          event: broadcastEventTypes.ACTIVE_USERS,
+          activeUsers: peers
+        });
+      });
+
     });
   });
 };

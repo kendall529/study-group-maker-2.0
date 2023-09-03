@@ -1,0 +1,30 @@
+.active-user-list-container {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .active-user-list-item {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+  }
+  
+  .active-user-list-item:hover {
+    background-color: #8885b9;
+  }
+  
+  .active-user-list-image-container {
+    width: 60px;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+  
+  .active-user-list-text {
+    font-size: 24px;
+  }
+  
+  .active-user-list-image {
+    width: 100%;
+  }
