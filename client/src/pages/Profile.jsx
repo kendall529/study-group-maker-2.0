@@ -12,12 +12,11 @@ const Profile = () => {
 
 
   const getUserResults = useQuery(GET_USER, {
-    variables: { _id: Auth.token },
-  });
+    variables: {_id: "64efe03331931bb3f750e4e5"}});
 
   const getTopicResults = useQuery(GET_TOPICS);
 
-  const users = getUserResults.data?.user || [];
+  const users = getUserResults.data?.getUser || [];
   const topics = getTopicResults.data?.getTopics || [];
   
     return (
