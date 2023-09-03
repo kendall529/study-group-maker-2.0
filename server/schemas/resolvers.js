@@ -10,8 +10,8 @@ const resolvers = {
         populate: ['topic_id', 'created_by']
       });
     },
-    getUser: async (parent, args, context) => {
-      return await User.findOne({ _id: context.user._id }).populate('groups').populate({
+    getUser: (parent, args, context) => {
+      return User.findOne({ _id: context.user._id }).populate('groups').populate({
         path: 'groups',
         populate: ['topic_id', 'created_by']
       });

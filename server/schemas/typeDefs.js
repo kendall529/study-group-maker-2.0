@@ -37,11 +37,11 @@ const typeDefs = `
 
   type Query {
     getUsers: [User]
-    getUser: User
+    getUser(_id: ID!): User
     getGroups: [Group]
-    getGroup(group_id: ID!): Group
+    getGroup(_id: ID!): Group
     getTopics: [Topic]
-  }
+  
 
   type Mutation {
     login(user_name: String!, password: String!): Auth

@@ -10,15 +10,20 @@ import Auth from '../utils/auth';
 
 const Profile = () => {
 
+  const { userParam } = useParams();
 
   const getUserResults = useQuery(GET_USER, {
-    variables: { _id: Auth.token },
+    variables: { _id: userParam },
   });
+
+  console.log(getUserResults.data);
 
   const getTopicResults = useQuery(GET_TOPICS);
 
-  const users = getUserResults.data?.user || [];
+  const users = getUserResults.data?.getUser || [];
   const topics = getTopicResults.data?.getTopics || [];
+
+  console.log(users);
   
     return (
         <div>
