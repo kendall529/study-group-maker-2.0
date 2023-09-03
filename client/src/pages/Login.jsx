@@ -18,7 +18,6 @@ const UsernameInput = ({ currentUsername, updateUsername }) => {
           type="text"
           value={currentUsername}
           onChange={(event) => { 
-            console.log("Username input change: ", event.target.value);
             updateUsername(event.target.value); }}
       />
   );
@@ -43,27 +42,23 @@ const Login = (props) => {
     // submission form
     const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log("Submitting form with state: ", formState);  // Debug line
-    console.log("Type of user_name:", typeof formState.user_name);
-    console.log("Type of password:", typeof formState.password);
+
+    dispatch(setUsername(formState.user_name)); // sets username in Redux store
+
+    registerNewUser(formState.user_name);
 
     try {
-      dispatch(setUsername(formState.user_name)); // sets username in Redux store
-      console.log('Dispatched username to Redux'); // Debug line
-      registerNewUser(formState.user_name);
-      
+
       console.log('attempting login ...');
-      const { data } = await login({
-        variables: { ...formState },
+      const mutationRes = await login({
+        variables: { user_name: formState.user_name, password: formState.password },
       });
-      console.log("Login successful, data:", data);  // Debug line
 
-
-      Auth.login(data.login.token);
+      Auth.login(mutationRes.data.login.token);
 
 
     } catch (e) {
-      console.error('error during login', e);
+        console.error('Error object:', e);
     }
 
     // clearing the form
@@ -80,7 +75,7 @@ const Login = (props) => {
             {data ? (
               <p>
                 Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
+                <Link to="/Dashboard">To the dashboard.</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>

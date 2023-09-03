@@ -10,7 +10,7 @@ const STATUS_BAD_REQUEST = 400;
 
 module.exports = {
   // Middleware for our authenticated routes
-  authMiddleware: async function ({ req, res, next }) {
+  authMiddleware: function ({ req, res, next }) {
     // Allows token to be sent via req.query or headers
     let token = req.query.token || req.headers.authorization || req.body.token;
 
@@ -25,7 +25,7 @@ module.exports = {
 
     try {
       // Verify token and extract user data
-      const { data } = await jwt.verify(token, secret, { maxAge: expiration });
+      const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
     } catch (err) {
       console.log(INVALID_TOKEN);

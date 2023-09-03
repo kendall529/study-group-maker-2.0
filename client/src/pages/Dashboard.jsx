@@ -1,11 +1,12 @@
 import React from 'react';
 import ActiveUsersList from '../components/ActiveUsersList';
 // import logo from '../assets/'
-
+import '../styling/Dashboard.css';
+import '../App.css';
 
 const Dashboard = () => {
     return (
-        <div className='dashboard-container main-color-background'>
+        <div className='dashboard-container'>
             <div className='dashboard-left-section'>
                 <div className='dashboard-content-container'>
                     content

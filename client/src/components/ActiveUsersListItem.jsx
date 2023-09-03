@@ -12,7 +12,7 @@ const ActiveUsersListItem = (props) => {
             <div className='active-user-list-image-container'>
                 <img className='active-user-list-image' src="userAvatar" alt="" />
             </div>
-            <span className='active-user-list-text'>{activeUser.username}</span>
+            <span className='active-user-list-text'>{activeUser.user_name}</span>
         </div>
     )
 };

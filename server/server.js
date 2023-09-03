@@ -59,7 +59,12 @@ const startApolloServer = async () => {
       },
     });
 
-    let peers = [];
+    const peers = [];
+
+    const broadcastEventTypes = {
+      ACTIVE_USERS: 'ACTIVE_USERS',
+      GROUP_CALL_ROOMS: 'GROUP_CALL_ROOMS'
+    }
 
     io.on("connection", (socket) => {
       socket.emit("connection", null);
@@ -73,7 +78,12 @@ const startApolloServer = async () => {
         });
         console.log('registered new user');
         console.log(peers);
-      })
+
+        io.sockets.emit('broadcast', {
+          event: broadcastEventTypes.ACTIVE_USERS,
+          activeUsers: peers
+        });
+      });
     });
   });
 };
