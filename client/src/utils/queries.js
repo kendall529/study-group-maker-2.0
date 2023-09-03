@@ -30,8 +30,9 @@ export const GET_USERS = gql`
 `;
 
 export const GET_USER = gql`
-query GetUser {
-  getUser {
+query GetUser($_id: ID!) {
+  getUser(_id: $_id)
+  {
     _id
     user_name
     first_name

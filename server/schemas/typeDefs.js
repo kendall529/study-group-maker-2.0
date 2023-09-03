@@ -37,7 +37,7 @@ const typeDefs = `
 
   type Query {
     getUsers: [User]
-    getUser: User
+    getUser(_id: ID!): User
     getGroups: [Group]
     getGroup(group_id: ID!): Group
     getTopics: [Topic]
