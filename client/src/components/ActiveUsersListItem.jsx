@@ -1,4 +1,7 @@
 import React from 'react';
+import '../styling/ActiveUsersList.css';
+import contactImg from '../assets/images/user_1946845.png'
+
 
 const ActiveUsersListItem = (props) => {
     const { activeUser } = props;
@@ -10,9 +13,9 @@ const ActiveUsersListItem = (props) => {
     return (
         <div className='active-user-list-item' onClick={handleListItemPressed}>
             <div className='active-user-list-image-container'>
-                <img className='active-user-list-image' src="userAvatar" alt="" />
+                <img className='active-user-list-image' src={contactImg} alt="Designed by Freepik www.freepik.com" />
             </div>
-            <span className='active-user-list-text'>{activeUser.username}</span>
+            <span className='active-user-list-text'>{activeUser.user_name}</span>
         </div>
     )
 };

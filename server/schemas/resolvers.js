@@ -42,6 +42,10 @@ const resolvers = {
 
       const token = signToken(user);
 
+      if(!token) {
+        throw new Error('Could not sign token');
+      }
+
       return { token, user };
     },
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,  useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import { setUsername } from '../store/actions/dashboardActions';
@@ -17,7 +17,8 @@ const UsernameInput = ({ currentUsername, updateUsername }) => {
           name="user_name"
           type="text"
           value={currentUsername}
-          onChange={(event) => { updateUsername(event.target.value); }}
+          onChange={(event) => { 
+            updateUsername(event.target.value); }}
       />
   );
 };
@@ -26,6 +27,7 @@ const Login = (props) => {
     const dispatch = useDispatch();
     const [formState, setFormState] = useState({ user_name: '', password:''});
     const [login, {error, data}] = useMutation(LOGIN_USER);
+    const navigate = useNavigate();
     
 
     
@@ -36,33 +38,39 @@ const Login = (props) => {
             ...formState,
             [name]: value,
         });
-        registerNewUser(name);
     }
 
     // submission form
     const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+
+    dispatch(setUsername(formState.user_name)); // sets username in Redux store
+
+    registerNewUser(formState.user_name);
+
     try {
-      const { data } = await login({
-        variables: { ...formState },
+
+      console.log('attempting login ...');
+      const mutationRes = await login({
+        variables: { user_name: formState.user_name, password: formState.password },
       });
 
+      Auth.login(mutationRes.data.login.token);
 
-      Auth.login(data.login.token);
-
-      dispatch(setUsername(formState.user_name)); // sets username in Redux store
 
     } catch (e) {
-      console.error(e);
+        console.error('Error object:', e);
     }
 
     // clearing the form
     setFormState({
-      username: '',
+      user_name: '',
       password: '',
     });
+
+    navigate('/Dashboard');
   };
+
   return (
       <div className="col-12 col-lg-10">
         <div className="card">
@@ -71,14 +79,14 @@ const Login = (props) => {
             {data ? (
               <p>
                 Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
+                <Link to="/Dashboard">To the dashboard.</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <div className='mb-6 mt-6 flex justify-center'>
-                  <label htmlFor="username" className='block mb-6 text-sm font-medium text-gray-900 dark:text-white'></label>
+                  <label htmlFor="user_name" className='block mb-6 text-sm font-medium text-gray-900 dark:text-white'></label>
                   <UsernameInput
-                    currentUsername={formState.username}
+                    currentUsername={formState.user_name}
                     updateUsername={(newUsername) => setFormState({ ...formState, user_name: newUsername })}
                   />
                 </div>

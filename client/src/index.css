@@ -2,10 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --main-bg-color: #1A264C;
+  --secondary-bg-color:  rgb(107 114 128);
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #1A264C;
     height: 200vh;
+    /* padding-top: 70px; */
 }
 
 #home {

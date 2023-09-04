@@ -1,19 +1,17 @@
-import { useState, useEffect } from 'react'
-import { connectWithWebSocket } from './utils/webSockConnection/webSockConnection'
-import React from 'react';
-import { Provider } from 'react-redux';
-import store from './store/store';
-import {
-  BrowserRouter as Router, Link, useLocation, Outlet
-} from 'react-router-dom';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from '@apollo/client';
+import { useEffect } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import Nav from './components/NavTabs';
+import Home from './pages/Home';  // Import your page components
+import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
+import Profile from './pages/Profile';
+import Signup from './pages/Signup';
+import Groups from './pages/Groups';
+import Contact from './pages/Contact';
+import Error from './pages/Error';
+import { connectWithWebSocket } from './utils/webSockConnection/webSockConnection';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -46,25 +44,26 @@ function App() {
     connectWithWebSocket();
   }, []);
 
-  return (
-
-    <Provider store={store}>
+    return (
         <ApolloProvider client={client}>
-              <div>
-                <a href="/">Study Group Maker</a>
-                <Nav />
-
-                <main>  
-                  <Outlet />
-                </main>
-              </div>
+          <BrowserRouter>
+            <div>
+              <a href="/">Study Group Maker</a>
+              <Nav />
+              <Routes>
+                <Route index element={<Home />} />
+                <Route path="/Groups" element={<Groups />} />
+                <Route path="/Contact" element={<Contact />} />
+                <Route path="/Login" element={<Login />} />
+                <Route path="/Profile/:_id" element={<Profile />} />
+                <Route path="/SignUp" element={<Signup />} />
+                <Route path="/Dashboard" element={<Dashboard />} />
+                <Route path="*" element={<Error />} /> {/* Catch-all route */}
+              </Routes>
+            </div>
+          </BrowserRouter>
         </ApolloProvider>
-    </Provider>
-
-
-  )
-}
-
-
-
-export default App
+    );
+  }
+  
+  export default App;
