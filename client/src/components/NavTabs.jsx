@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import Auth from '../utils/auth';
 
 function NavTabs() {
     const currentPage = useLocation().pathname;
     const [isNavCollapsed,  setIsNavCollapsed] = useState(true);
 
     const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
+
+    const logout = (event) => {
+      event.preventDefault();
+      Auth.logout();
+    };
   
     return (
       <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 left-o border-b border-gray-200 Dark:border-gray-600">
@@ -82,24 +88,20 @@ function NavTabs() {
                   Contact
                 </Link>
               </li>
-              <li className="nav-item block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-                <Link
-                  to="/Login"
-                  // Checks to see if the contact page is the current page
-                  className={currentPage === '/Login' ? 'nav-link active' : 'nav-link'}
-                >
-                  Login
-                </Link>
-              </li>
-              <li className="nav-item block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-                <Link
-                  to="/SignUp"
-                  // Checks to see if the contact page is the current page
-                  className={currentPage === '/SignUp' ? 'nav-link active' : 'nav-link'}
-                >
-                  Sign Up
-                </Link>
-              </li>
+                {Auth.loggedIn() ? (
+                  <button className="nav-item block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" onClick={logout}>
+                    Logout
+                  </button>
+                ) : (
+                <>
+                  <Link className="btn btn-lg btn-primary m-2 nav-item block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" to="/login">
+                    Login
+                  </Link>
+                  <Link className="nav-item block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" to="/SignUp">
+                    Sign Up
+                  </Link>
+                </>
+              )}
             </ul>
           </div>
         </div>
