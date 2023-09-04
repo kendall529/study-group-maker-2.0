@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,  useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import { setUsername } from '../store/actions/dashboardActions';
@@ -27,6 +27,7 @@ const Login = (props) => {
     const dispatch = useDispatch();
     const [formState, setFormState] = useState({ user_name: '', password:''});
     const [login, {error, data}] = useMutation(LOGIN_USER);
+    const navigate = useNavigate();
     
 
     
@@ -66,7 +67,10 @@ const Login = (props) => {
       user_name: '',
       password: '',
     });
+
+    navigate('/Dashboard');
   };
+
   return (
       <div className="col-12 col-lg-10">
         <div className="card">

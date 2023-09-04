@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     transition: 0.3s;
+    padding-top: 70px;
   }
   
   .active-user-list-item:hover {

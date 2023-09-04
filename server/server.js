@@ -59,7 +59,8 @@ const startApolloServer = async () => {
       },
     });
 
-    const peers = [];
+    // Create a Map to keep track of active users
+    const activeUsers = new Map();  // <-- New line
 
     const broadcastEventTypes = {
       ACTIVE_USERS: 'ACTIVE_USERS',
@@ -67,34 +68,46 @@ const startApolloServer = async () => {
     };
 
     io.on("connection", (socket) => {
-      socket.emit("connection", null);
       console.log("New user connected.");
-      console.log(socket.id);  // uncomment if needed
+      console.log(socket.id);
 
-      // listens for 'request-active-users' event
-      socket.on('request-active-users', () => {
-        // emit active users list
-        io.sockets.emit('broadcast', {
-          event: broadcastEventTypes.ACTIVE_USERS,
-          activeUsers: peers
-        });
-      });
-      
+      socket.on('refreshSocketId', (jwtToken) => {
+        try {
+          const decoded = jwt.verify(jwtToken, process.env.JWT_SECRET);
+          const username = decoded.user_name;
+
+          if(activeUsers.has(username)) {
+            activeUsers.set(username, {socketId: socket.id, user_name: username})
+          }
+        } catch (e) {
+          console.error('Invalid JWT token received')
+        }
+      })
+    
       socket.on('register-new-user', (data) => {
-        peers.push({
-          user_name: data.username,
-          socketId: data.socketId
-        });
+        // Check if user is already connected
+        console.log('register new user event received:>> ', data);
+        if (activeUsers.has(data.username)) {
+          // Get the old socket ID
+          const oldSocketId = activeUsers.get(data.username).socketId;
+          
+          // Disconnect the old socket
+          io.sockets.sockets.get(oldSocketId).disconnect();
+        }
+    
+        // Save the new socket and username
+        activeUsers.set(data.username, { socketId: socket.id, user_name: data.username });
+    
+        const peers = Array.from(activeUsers.values());
         console.log('registered new user');
         console.log(peers);
-
-        console.log('emitting broadcast for active users.');
+    
+        // Broadcast to all connected clients
         io.sockets.emit('broadcast', {
           event: broadcastEventTypes.ACTIVE_USERS,
           activeUsers: peers
         });
       });
-
     });
   });
 };

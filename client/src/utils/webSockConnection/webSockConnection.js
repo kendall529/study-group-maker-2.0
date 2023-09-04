@@ -12,17 +12,23 @@ const broadcastEventTypes = {
 let socket;
 
 export const connectWithWebSocket = () => {
-    socket = socketClient(SERVER);
+    const existingId = localStorage.getItem('socketId');
 
-    socket.on('connection', () => {
-        console.log('Successfully connected with websocket server');
-        console.log(socket.id);
-    });
-
-    socket.on('broadcast', (data) => {
-        handleBroadcastEvents(data);
-    })
-}
+    if (!socket || socket.id !== existingId) {
+        socket = socketClient(SERVER);
+    
+        socket.on('connection', () => {
+            console.log('Successfully connected with the websocket server');
+            console.log('socketId:>>', socket.id);
+            localStorage.setItem('socketId', socket.id);
+        });
+        
+        socket.on('broadcast', (data) => {
+            handleBroadcastEvents(data);
+        });
+    }
+    return socket;
+};
 
 export const registerNewUser = (user_name) => {
     if(socket && socket.connected) {
@@ -49,9 +55,14 @@ export const requestActiveUsers = () => {
 
 
 const handleBroadcastEvents = (data) => {
+    console.log("Received data:", data);
     switch (data.event) {
         case broadcastEventTypes.ACTIVE_USERS:
-            const activeUsers = data.activeUsers.filter(activeUser => activeUser.socket.Id !== socket.id);
+            console.log("Before filtering:", data.activeUsers);
+            const activeUsers = data.activeUsers.filter(
+              activeUser => activeUser.socketId !== socket.id
+            );
+            console.log("After filtering:", activeUsers);
             store.dispatch(dashboardActions.setActiveUsers(activeUsers));
             break;
         default:
