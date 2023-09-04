@@ -6,6 +6,7 @@ import { requestActiveUsers } from '../utils/webSockConnection/webSockConnection
 const ActiveUsersList = ({ activeUsers, socket }) => {
 
     useEffect(() => {
+        // refreshSocketId();
         requestActiveUsers();
     }, []);
 
