@@ -41,6 +41,7 @@ const typeDefs = `
     getGroups: [Group]
     getGroup(group_id: ID!): Group
     getTopics: [Topic]
+    getMembers(group_id: ID!): [User]
   }
 
   type Mutation {
