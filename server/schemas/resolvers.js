@@ -26,8 +26,11 @@ const resolvers = {
       return await Group.findOne({ _id: args.group_id}).populate('created_by').populate('topic_id');
     },
     getTopics: async (parent, args, context) => {
-        return await Topic.find({});
+      return await Topic.find({});
     },
+    getMembers: async (parent, { group_id }, context) => {
+      return await User.find({groups: group_id})
+    }
   },
   Mutation: {
     login: async (parent, { user_name, password }) => {
