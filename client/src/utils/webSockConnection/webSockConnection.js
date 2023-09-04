@@ -26,10 +26,10 @@ export const connectWithWebSocket = () => {
             socket.emit('register-new-user', { token: idToken });  // Use the token to register the new user
         });
 
-        // Add this to listen for username updates
-        socket.on('update-username', (data) => {
-            console.log('Updated username:', data.username);
-        });
+        // // Add this to listen for username updates
+        // socket.on('update-username', (data) => {
+        //     console.log('Updated username:', data.username);
+        // });
 
         socket.on('broadcast', (data) => {
             handleBroadcastEvents(data);
@@ -54,24 +54,24 @@ export const registerNewUser = (user_name) => {
 
 
 
-export const refreshSocketId = () => {
-    const jwtToken = AuthService.getToken();
+// export const refreshSocketId = () => {
+//     const jwtToken = AuthService.getToken();
 
-    setTimeout(() => {
-        if(socket && socket.connected && jwtToken) {
-            socket.emit('refreshSocketId', jwtToken);
-            console.log('emitted refreshSocketId with token:>> ', jwtToken);
-        } else {
-            console.log('socket not init or not connected');
-        }
-    }, 1000);
-};
+//     setTimeout(() => {
+//         if(socket && socket.connected && jwtToken) {
+//             socket.emit('refreshSocketId', jwtToken);
+//             console.log('emitted refreshSocketId with token:>> ', jwtToken);
+//         } else {
+//             console.log('socket not init or not connected');
+//         }
+//     }, 1000);
+// };
 
 export const requestActiveUsers = () => {
     setTimeout(() => {
         if (socket && socket.connected) {
             socket.emit('request-active-users');
-            console.log('Emitting request for active users.');
+            // console.log('Emitting request for active users.');
         } else {
             console.log('Socket not connected. Cannot request active users.');
         }
