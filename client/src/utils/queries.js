@@ -111,3 +111,13 @@ export const GET_TOPICS = gql`
 		}
   }
 `;
+
+export const GET_MEMBERS = gql`
+  query GetMembers($group_id: ID!) {
+    getMembers(group_id: $group_id) {
+      _id
+      user_name
+      email
+    }
+  }
+`;
