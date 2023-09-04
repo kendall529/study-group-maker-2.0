@@ -36,7 +36,6 @@ const GroupForm = ({groups,topics, user, title}) => {
             variables: { ...formData },
           });
     
-          navigate(`/groups/${data.addGroup._id}`);
         } catch (err) {
           console.error(err);
         }
