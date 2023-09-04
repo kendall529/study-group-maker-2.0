@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 import { ENROLL } from '../utils/mutations';
 import { useState, useContext } from 'react';
+import { Card } from 'flowbite-react';
 
 const GroupList = ({ groups }) => {
   if (!groups) {
@@ -36,11 +37,13 @@ const GroupList = ({ groups }) => {
       };
 
   return (
-        <div className="group-container mt-14 flex flex-wrap">
+    
+        <div className="mt-20 flex flex-wrap justify-center">
             {groups &&
                 groups.map((group) => (
-                    <div className="info-card">
-                    <h2 className='text-blue-400 font-semibold text-4xl'>
+                  <Card className='group-card max-w-sm mb-6 mx-4 px-6 font-serif bg-gray-400 border border-gray-400 rounded-2xl shadow-lg shadow-blue-800 hover:bg-gray-600 border-gray-600'> 
+                  
+                    <h2 className='text-blue-800 font-semibold text-4xl'>
                         <Link to={`/groups/${group.id}`}>
                             {group.group_name}
                         </Link>
@@ -60,7 +63,7 @@ const GroupList = ({ groups }) => {
                     </p>
                     <p>
                         Meeting Link: 
-                        <Link to={group.zoom_link}>
+                        <Link className='hover:text-blue-400' to={group.zoom_link}>
                             {group.zoom_link}
                         </Link>
                     </p>
@@ -70,8 +73,9 @@ const GroupList = ({ groups }) => {
                 </div>
                 <div id="enroll-success" className="text-green"></div>
 
-            </div>
+                </Card>
             ))}
+      
         </div>
   );
 };
