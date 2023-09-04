@@ -11,10 +11,13 @@ const resolvers = {
       });
     },
     getUser: async (parent, args, context) => {
-      return await User.findOne({ _id: args}).populate('groups').populate({
-        path: 'groups',
-        populate: ['topic_id', 'created_by']
-      });
+      if (context.user) {
+        return await User.findOne({ _id: context.user._id }).populate('groups').populate({
+          path: 'groups',
+          populate: ['topic_id', 'created_by']
+        });
+      }
+      throw AuthenticationError;
     },
     getGroups: async (parent, args, context) => {
       return await Group.find({}).populate('created_by').populate('topic_id');
@@ -58,17 +61,18 @@ const resolvers = {
         }
 
         // Create a new user document
-        const newUser = new User({
+        const user = new User({
           user_name: user_name,
           email,
           password: password,
+          groups: []
         });
 
         // Save the user to the database
-        await newUser.save();
+        await user.save();
 
-        const token = signToken(newUser);
-        return { token, newUser };
+        const token = signToken(user);
+        return { token, user };
 
       } catch (error) {
         throw error;
@@ -76,7 +80,7 @@ const resolvers = {
 
     },
     addGroup: async (parent, { group_name, group_description, topic_id, skill_level, zoom_link, meet_time }, context) => {
-      if (context.user) {
+        console.log()
         const group = await Group.create({ group_name, group_description, topic_id, skill_level, zoom_link, meet_time, created_by: context.user._id });
 
         await User.findOneAndUpdate(
@@ -85,12 +89,10 @@ const resolvers = {
         );
 
         return group;
-      }
-      throw AuthenticationError;
     },
     removeGroup: async (parent, { group_id }, context) => {
       if (context.user) {
-        const group = await Group.findOneAndDelete({ id_:group_id });
+        const group = await Group.findOneAndDelete({ _id:group_id });
 
         await User.updateMany(
           { groups: group_id },
@@ -101,20 +103,20 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    enroll: async (parent, { user_id, group_id }, context) => {
+    enroll: async (parent, { group_id }, context) => {
       if (context.user) {
         const user = await User.findOneAndUpdate(
-          { _id: group_id },
+          { _id: context.user._id },
           { $addToSet: { groups: group_id } }
         );
         return user;
       }
       throw AuthenticationError;
     },
-    unEnroll: async (parent, { user_id, group_id }, context) => {
+    unEnroll: async (parent, { group_id }, context) => {
       if (context.user) {
         const user = await User.findOneAndUpdate(
-          { _id: group_id },
+          { _id: context.user._id },
           { $pull: { groups: group_id } }
         );
         return user;

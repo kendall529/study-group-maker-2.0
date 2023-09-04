@@ -2,8 +2,8 @@ const typeDefs = `
   type User {
     _id: ID!
     user_name: String!
-    first_name: String!
-    last_name: String!
+    first_name: String
+    last_name: String
     email: String!
     groups: [Group]
   }
@@ -37,7 +37,7 @@ const typeDefs = `
 
   type Query {
     getUsers: [User]
-    getUser(_id: ID!): User
+    getUser: User
     getGroups: [Group]
     getGroup(group_id: ID!): Group
     getTopics: [Topic]
@@ -48,8 +48,8 @@ const typeDefs = `
     addUser(user_name: String!, email: String!, password: String!): Auth
     addGroup(group_name: String!, group_description: String!, topic_id: ID!, skill_level: String!, zoom_link: String!, meet_time: String!): Group
     removeGroup(group_id: ID!): Group
-    enroll(user_id: ID!, group_id: ID!): User
-    unEnroll(user_id: ID!, group_id: ID!): User
+    enroll(group_id: ID!): User
+    unEnroll(group_id: ID!): User
   }
 `;
 

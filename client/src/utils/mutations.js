@@ -6,6 +6,7 @@ export const LOGIN_USER = gql`
       token
       user {
         _id
+        user_name
       }
     }
   }
@@ -24,15 +25,9 @@ export const ADD_GROUP = gql`
     addGroup(group_name: $group_name, group_description: $group_description, topic_id: $topic_id, skill_level: $skill_level, zoom_link: $zoom_link, meet_time: $meet_time) {
 			group_name
 			group_description
-			topic_id {
-				topic_name
-			}
 			skill_level
 			zoom_link
 			meet_time
-			created_by {
-    _id
-  }
     }
   }
 `;
@@ -54,8 +49,8 @@ export const REMOVE_GROUP = gql`
 `;
 
 export const ENROLL = gql`
-  mutation enroll($user_id: ID!, $group_id: ID!) {
-    enroll(user_id: $user_id, group_id: $group_id) {
+  mutation enroll( $group_id: ID!) {
+    enroll(group_id: $group_id) {
       _id
       username
       first_name
@@ -77,8 +72,8 @@ export const ENROLL = gql`
 `;
 
 export const UNENROLL = gql`
-  mutation unEnroll($user_id: ID!, $group_id: ID!) {
-    unEnroll(user_id: $user_id, group_id: $group_id) {
+  mutation unEnroll($group_id: ID!) {
+    unEnroll(group_id: $group_id) {
       _id
       username
       first_name
