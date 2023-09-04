@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import ActiveUsersListItem from './ActiveUsersListItem';
 import { connect } from 'react-redux';
-import { requestActiveUsers } from '../utils/webSockConnection/webSockConnection';
+import { refreshSocketId, requestActiveUsers } from '../utils/webSockConnection/webSockConnection';
 
 const ActiveUsersList = ({ activeUsers, socket }) => {
 
     useEffect(() => {
+        refreshSocketId();
         requestActiveUsers();
     }, []);
 

@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const socketIO = require("socket.io");
+const jwt = require('jsonwebtoken');
 
 // Apollo Server
 const { ApolloServer } = require('@apollo/server');
