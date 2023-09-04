@@ -26,9 +26,15 @@ export const connectWithWebSocket = () => {
             socket.emit('register-new-user', { token: idToken });  // Use the token to register the new user
         });
 
+        // Add this to listen for username updates
+        socket.on('update-username', (data) => {
+            console.log('Updated username:', data.username);
+        });
+
         socket.on('broadcast', (data) => {
             handleBroadcastEvents(data);
         });
+
     }
 
     return socket;
@@ -88,3 +94,4 @@ const handleBroadcastEvents = (data) => {
             break;
     };
 };
+
