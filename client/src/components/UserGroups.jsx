@@ -1,21 +1,23 @@
 import { Link } from 'react-router-dom';
+import { Card } from 'flowbite-react';
 
 const UserGroups = ({ groups, users}) => {
   if (!groups) {
-    return <h3>No Groups Yet</h3>;
+    return <h3 className='flex flex-wrap justify-end mr-6 text-white text-xl font-semibold'>No Groups Yet</h3>;
   }
 
   return (
-        <div class="group-container">
+        <div className='mt-20 flex flex-wrap justify-end'>
             {users.groups &&
                 users.groups.map((group) => (
+                    <Card className='group-card max-w-sm mb-6 mx-4 px-6 font-serif bg-gray-400 border border-gray-400 rounded-2xl shadow-lg shadow-blue-800 hover:bg-gray-600 border-gray-600'>
                     <div class="user-group-list-container">
                         <div id="user-group-list">
     
                             <div class="user-group-list-card">
                                 <div class="user-group-info">
                                     <div>
-                                        <h2>
+                                        <h2 className='text-blue-800 font-semibold text-4xl'>
                                             <a href="/groups/{{group.id}}">{group.group_name}</a>
                                         </h2>
                                         <p>
@@ -45,7 +47,7 @@ const UserGroups = ({ groups, users}) => {
                                         }
                                         </select>
         
-                                        <button class="add-user button has-background-info-dark has-text-white" type="submit">Add User</button>
+                                        <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" value={group.id} name="groupId" id="enroll_user" type="submit">Add User</button>
                                     </form>
         
                                 </div>
@@ -53,11 +55,13 @@ const UserGroups = ({ groups, users}) => {
 
                         </div>
                     </div>
+                    </Card>
                 ))}
-                <script src="./js/enrollUser.js"></script>
-                <script src="/js/deleteGroup.js"></script>
-                <script src="/js/unenrolled.js"></script>
-                <script src="./js/groups.js"></script>
+                {/* <script src="./js/enrollUser.js"></script> */}
+                {/* <script src="/js/deleteGroup.js"></script> */}
+                {/* <script src="/js/unenrolled.js"></script> */}
+                {/* <script src="./js/groups.js"></script> */}
+               
             </div>
         );
     };

@@ -43,7 +43,6 @@ Study groups are also set at a distinct time, and have a field to provide a meet
 - React is used for building interactive user interfaces (https://react.dev/)
 - Tailwind is used for styling (https://tailwindcss.com/)
 - Flowbite is used for styling (https://flowbite.com/)
-- Swiper.js is used as an additional technology to add a slider (https://swiperjs.com/)
 
 
 
