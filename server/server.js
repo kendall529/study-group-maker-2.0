@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const socketIO = require("socket.io");
+const jwt = require('jsonwebtoken');
 
 // Apollo Server
 const { ApolloServer } = require('@apollo/server');
@@ -61,8 +62,7 @@ const startApolloServer = async () => {
       },
     });
 
-    // Create a Map to keep track of active users
-    const activeUsers = new Map();  // <-- New line
+    let peers = [];
 
     const broadcastEventTypes = {
       ACTIVE_USERS: 'ACTIVE_USERS',
@@ -72,39 +72,26 @@ const startApolloServer = async () => {
     io.on("connection", (socket) => {
       console.log("New user connected.");
       console.log(socket.id);
-
-      socket.on('refreshSocketId', (jwtToken) => {
-        try {
-          const decoded = jwt.verify(jwtToken, process.env.JWT_SECRET);
-          const username = decoded.user_name;
-
-          if(activeUsers.has(username)) {
-            activeUsers.set(username, {socketId: socket.id, user_name: username})
-          }
-        } catch (e) {
-          console.error('Invalid JWT token received')
-        }
-      })
     
       socket.on('register-new-user', (data) => {
-        // Check if user is already connected
-        console.log('register new user event received:>> ', data);
-        if (activeUsers.has(data.username)) {
-          // Get the old socket ID
-          const oldSocketId = activeUsers.get(data.username).socketId;
-          
-          // Disconnect the old socket
-          io.sockets.sockets.get(oldSocketId).disconnect();
-        }
-    
-        // Save the new socket and username
-        activeUsers.set(data.username, { socketId: socket.id, user_name: data.username });
-    
-        const peers = Array.from(activeUsers.values());
+        peers.push({
+          user_name: data.username,
+          socketId: data.socketId
+        });
+
         console.log('registered new user');
         console.log(peers);
-    
+      
         // Broadcast to all connected clients
+        io.sockets.emit('broadcast', {
+          event: broadcastEventTypes.ACTIVE_USERS,
+          activeUsers: peers
+        });
+      });
+
+      socket.on('disconnect', () => {
+        console.log('user disconnected');
+        peers = peers.filter(peer => peer.socketId !== socket.id);
         io.sockets.emit('broadcast', {
           event: broadcastEventTypes.ACTIVE_USERS,
           activeUsers: peers

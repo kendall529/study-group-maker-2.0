@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import ActiveUsersList from '../components/ActiveUsersList';
+import * as webRTCHandler from '../utils/webRTC/webRTCHandle'
+import DirectCall from '../components/DirectCall';
+
 // import logo from '../assets/'
 import '../styling/Dashboard.css';
 import '../App.css';
 
 const Dashboard = () => {
+
+  
+    useEffect(() => {
+        webRTCHandler.getLocalStream();
+    }, [])
+
     return (
         <div className='dashboard-container'>
             <div className='dashboard-left-section'>
                 <div className='dashboard-content-container'>
-                    content
+                    <DirectCall />
                 </div>
                 <div className='dashboard-rooms-container secondary-background-color'>
                     rooms
@@ -25,6 +36,6 @@ const Dashboard = () => {
             </div>
         </div>
     )
-}
+};
 
 export default Dashboard;
