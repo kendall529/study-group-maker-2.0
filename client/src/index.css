@@ -3,107 +3,106 @@
 @tailwind utilities;
 
 :root {
-  --main-bg-color: #1A264C;
-  --secondary-bg-color:  rgb(107 114 128);
+  --main-bg-color: #1a264c;
+  --secondary-bg-color: rgb(107 114 128);
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #1A264C;
-    height: 200vh;
-    /* padding-top: 70px; */
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #1a264c;
+  height: 200vh;
+  /* padding-top: 70px; */
 }
 
 #home {
-    background-blend-mode: multiply;
-    background-color: rgba(69, 69, 69, 0.57);
+  background-blend-mode: multiply;
+  background-color: rgba(69, 69, 69, 0.57);
 }
 
 .about {
-    min-height: auto;
-    padding-bottom: 7rem;
-    padding-top: 20vh;
-    margin-top: 10vh;
-  }
+  min-height: auto;
+  padding-bottom: 7rem;
+  padding-top: 20vh;
+  margin-top: 10vh;
+}
 
-  .about h2 {
-    margin-bottom: 5rem;
+.about h2 {
+  margin-bottom: 5rem;
 }
 
 .about .about-card-container {
-    display: flex;
-    justify-content: center;
-    align-items: stretch; 
-    flex-wrap: wrap;
-    gap: 2rem;
-    margin: 0 2rem;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 0 2rem;
+}
 
-  .about-card-container .about-card {
-    display: flex; 
-    flex-direction: column; 
-    flex-grow: 1; 
-    flex-basis: 0; 
-    flex: 1 1 25rem;
-    background: #2d3142;
-    padding: 3rem 2rem 4rem;
-    border-radius: 2rem;
-    box-shadow: 0 .1rem .5rem rgba(0, 0, 0, 0.405);
-    text-align: center;
-    transition: 0.5s ease;
-  }
+.about-card-container .about-card {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-basis: 0;
+  flex: 1 1 25rem;
+  background: #2d3142;
+  padding: 3rem 2rem 4rem;
+  border-radius: 2rem;
+  box-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.405);
+  text-align: center;
+  transition: 0.5s ease;
+}
 
-  .about-card-container .about-card:hover {
-    box-shadow: 0 0.1rem 1.5rem rgba(0, 0, 0, 0.405);
-    transform: scale(1.02);
-  }
-  
-  .about-card i {
-    font-size: 7rem;
-    color: #1D72AA;
-  }
+.about-card-container .about-card:hover {
+  box-shadow: 0 0.1rem 1.5rem rgba(0, 0, 0, 0.405);
+  transform: scale(1.02);
+}
 
-  .about-card h3 {
-    font-size: clamp(1.5rem, 6vw, 2.6rem);
-    transition: 0.5s ease;
-  }
+.about-card i {
+  font-size: 7rem;
+  color: #1d72aa;
+}
 
-  .about-card:hover h3 {
-    color: #1D72AA;
-  }
-  
-  .about-card p {
-    font-size: clamp(1rem, 4vw, 1.6rem);
-    margin: 1rem 0 3rem;
-  }
-  
-  .about-card:nth-child(1) {
-    background-image: url(./assets/images/past.jpg);
-    background-size: cover;
-    background-blend-mode: multiply;
-    background-color: rgba(69, 69, 69, 0.57);
-  }
+.about-card h3 {
+  font-size: clamp(1.5rem, 6vw, 2.6rem);
+  transition: 0.5s ease;
+}
 
-  .about-card:nth-child(2) {
-    background-image: url(./assets/images/network.jpg);
-    background-size: cover;
-    background-blend-mode: multiply;
-    background-color: rgba(69, 69, 69, 0.57);
-  }
+.about-card:hover h3 {
+  color: #1d72aa;
+}
 
-  .about-card:nth-child(3) {
-    background-image: url(./assets/images/future2.jpg);
-    background-size: cover;
-    background-blend-mode: multiply;
-    background-color: rgba(69, 69, 69, 0.57);
-  }
+.about-card p {
+  font-size: clamp(1rem, 4vw, 1.6rem);
+  margin: 1rem 0 3rem;
+}
 
-  .group-card p {
-    font-size: 18px;
-    
-  }
+.about-card:nth-child(1) {
+  background-image: url(./assets/images/past.jpg);
+  background-size: cover;
+  background-blend-mode: multiply;
+  background-color: rgba(69, 69, 69, 0.57);
+}
 
-  .profile {
-    background-image: url(./assets/images/books2.jpg);
-    background-size: cover;
-  }
+.about-card:nth-child(2) {
+  background-image: url(./assets/images/network.jpg);
+  background-size: cover;
+  background-blend-mode: multiply;
+  background-color: rgba(69, 69, 69, 0.57);
+}
+
+.about-card:nth-child(3) {
+  background-image: url(./assets/images/future2.jpg);
+  background-size: cover;
+  background-blend-mode: multiply;
+  background-color: rgba(69, 69, 69, 0.57);
+}
+
+.group-card p {
+  font-size: 18px;
+}
+
+.profile {
+  background-image: url(./assets/images/books2.jpg);
+  background-size: cover;
+}

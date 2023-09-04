@@ -53,7 +53,7 @@ const GroupForm = ({groups,topics, user, title}) => {
       <section id="profile">
         <h3 className="mb-2 px-10 text-white text-2xl font-medium flex justify-center">Make a Study Group!</h3>
         <div className='flex justify-center'>
-            <div className="profile absolute rounded-lg px-2 mx-6">
+            <div className="profile absolute rounded-xl px-2 mx-6">
                 <div className="w-full max-w-sm p-4 sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
                     <form className="space-y-2" id="create_group" onSubmit={handleFormSubmit}>
                     <div>
