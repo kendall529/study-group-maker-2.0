@@ -4,15 +4,16 @@ import { ENROLL } from '../utils/mutations';
 import { useState, useContext } from 'react';
 import { Card } from 'flowbite-react';
 
-const GroupList = ({ groups }) => {
+const GroupList = ({ groups, user }) => {
   if (!groups) {
     return <h3>No Groups Yet</h3>;
   }
 
     const [formData, setFormData] = useState({
         group_id: '',
-        user_id: useContext.user_id,
       });
+
+    const { enroll, error } = useMutation(ENROLL);
     
 
     const handleInputChange = (event) => {
@@ -26,15 +27,16 @@ const GroupList = ({ groups }) => {
         console.log(formData);
 
         try {
-          const { data } = await addGroup({
+          const { data } = await enroll({
             variables: { ...formData },
           });
     
-          navigate(`/groups/${data.addGroup._id}`);
-        } catch (err) {
-          console.error(err);
+        } catch (error) {
+          console.error(error);
         }
       };
+
+      
 
   return (
     
@@ -67,11 +69,9 @@ const GroupList = ({ groups }) => {
                             {group.zoom_link}
                         </Link>
                     </p>
-                
                 <div>
-                    <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" value={group.id} name="groupId" id="enroll_user">Join Group</button>
+                    <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" value={group.id} name="groupId" id="enroll_user" onSubmit={handleFormSubmit}>Join Group</button>
                 </div>
-                <div id="enroll-success" className="text-green"></div>
 
                 </Card>
             ))}

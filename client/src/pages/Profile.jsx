@@ -13,7 +13,6 @@ const Profile = () => {
 
   const { userParam } = useParams();
   const getUserResults = useQuery(GET_USER);
-  console.log("userinfo:", getUserResults);
   const getTopicResults = useQuery(GET_TOPICS);
 
   const users = getUserResults.data?.getUser || [];
