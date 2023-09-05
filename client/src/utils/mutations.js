@@ -1,20 +1,20 @@
 import { gql } from '@apollo/client';
 
 export const LOGIN_USER = gql`
-  mutation login($user_name: String!, $password: String!) {
-    login(user_name: $user_name, password: $password) {
+  mutation login($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
       token
       user {
         _id
-        user_name
+        username
       }
     }
   }
 `;
 
 export const ADD_USER = gql`
-mutation addUser($user_name: String!, $password: String!, $email: String!) {
-  addUser(user_name: $user_name, password: $password, email: $email) {
+mutation addUser($username: String!, $password: String!, $email: String!) {
+  addUser(username: $username, password: $password, email: $email) {
       token
     }
   }
@@ -35,15 +35,9 @@ export const ADD_GROUP = gql`
 export const REMOVE_GROUP = gql`
   mutation removeGroup($group_id: ID!) {
     removeGroup(group_id: $group_id) {
-			group_name
-			group_description
-			topic_id {
-				topic_name
-			}
-			skill_level
-			zoom_link
-			meet_time
-			created_by
+      _id
+      group_name
+      group_description
     }
   }
 `;
@@ -53,20 +47,7 @@ export const ENROLL = gql`
     enroll(group_id: $group_id) {
       _id
       username
-      first_name
-      last_name
       email
-      groups {
-        group_name
-        group_description
-        topic_id {
-					topic_name
-        }
-        skill_level
-        zoom_link
-        meet_time
-				created_by
-      }
 		}
   }
 `;
@@ -76,20 +57,7 @@ export const UNENROLL = gql`
     unEnroll(group_id: $group_id) {
       _id
       username
-      first_name
-      last_name
       email
-      groups {
-        group_name
-        group_description
-        topic_id {
-					topic_name
-        }
-        skill_level
-        zoom_link
-        meet_time
-				created_by
-      }
 		}
   }
 `;

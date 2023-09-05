@@ -43,5 +43,20 @@
 	},
 	{
 		"topic_name": "Controllers"
+	},
+	{
+		"topic_name": "CS"
+	},
+	{
+		"topic_name": "NoSQL"
+	},
+	{
+		"topic_name": "PWA"
+	},
+	{
+		"topic_name": "React"
+	},
+	{
+		"topic_name": "MERN"
 	}
 ]

@@ -1,7 +1,7 @@
 import * as dashboardActions from '../actions/dashboardActions';
 
 const initState= {
-    user_name: '',
+    username: '',
     activeUsers: []
 };
 
@@ -11,7 +11,7 @@ const reducer = (state = initState, action) => {
         case dashboardActions.DASHBOARD_SET_USERNAME:
             return {
                 ...state,
-                user_name: action.user_name
+                username: action.username
             };
         case dashboardActions.DASHBOARD_SET_ACTIVE_USERS:
             console.log('updating active users in reducer :>> ', action.activeUsers);

@@ -40,13 +40,13 @@ export const connectWithWebSocket = () => {
     return socket;
 };
 
-export const registerNewUser = (user_name) => {
+export const registerNewUser = (username) => {
     if(socket && socket.connected) {
         socket.emit('register-new-user', {
-            username: user_name,
+            username: username,
             socketId: socket.id
         });
-        console.log(`Emitting register-new-user for username: ${user_name}`);
+        console.log(`Emitting register-new-user for username: ${username}`);
     } else {
         console.log('Socket not connected. Cannot register new user.');
     }
