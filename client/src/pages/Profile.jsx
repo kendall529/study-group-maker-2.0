@@ -24,6 +24,7 @@ const Profile = () => {
               {getUserResults.loading || getTopicResults.loading ? (
               <div>Loading...</div>
             ) : (
+              <>
               <div>
                 <UserGroups
                 users = {users}
@@ -33,6 +34,7 @@ const Profile = () => {
                 user = {users}
                 />
               </div>
+              </>
             )}
           </div>
         </div>
