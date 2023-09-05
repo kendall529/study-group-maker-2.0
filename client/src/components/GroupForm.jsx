@@ -44,14 +44,14 @@ const GroupForm = ({groups,topics, user, title}) => {
 
     return (
         <div>
-        <div className='flex justify-center'>
-        <h2 className="mt-6 mb-2 text-white text-3xl font-semibold">Ready to study, {user.username}?!</h2>
+        <div className='flex'>
+        <h2 className="mt-14 mb-2 text-white text-3xl font-semibold">Ready to study, {user.username}?!</h2>
       </div>
 
 
       <section id="profile">
         <h3 className="mb-2 px-10 text-white text-2xl font-medium flex justify-center">Make a Study Group!</h3>
-        <div className='flex justify-center'>
+        <div className='flex'>
             <div className="profile absolute rounded-xl px-2 mx-6">
                 <div className="w-full max-w-sm p-4 sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
                     <form className="space-y-2" id="create_group" onSubmit={handleFormSubmit}>

@@ -6,10 +6,19 @@ import { mediaStreamStorage } from '../utils/webRTC/webRTCHandle';
 import RejectedCallDialog from './RejectedCallDialog';
 import CallingDialog from './CallingDialog';
 import IncomingCallDialog from './IncomingCallDialog';
-import { callStates } from '../store/actions/callActions';
+import { callStates, setCallRejected } from '../store/actions/callActions';
 
 const DirectCall = (props) => {
-    const { localStreamId, remoteStreamId, callState, callerUsername, callingDialogVisible } = props;
+    const { 
+        localStreamId, 
+        remoteStreamId, 
+        callState, 
+        callerUsername, 
+        callingDialogVisible, 
+        callRejected, 
+        hideRejectedCallDialog 
+    } = props;
+
     const localStream = mediaStreamStorage[localStreamId];
     const remoteStream = mediaStreamStorage[remoteStreamId];
 
@@ -17,8 +26,11 @@ const DirectCall = (props) => {
         <>
             <LocalVideoView localStream={localStream} />
             {remoteStream && <RemoteVideoView remoteStream={remoteStream} />}
-            {/* <RejectedCallDialog /> */}
-            {callState === callStates.CALL_REQUESTED && <IncomingCallDialog callerUsername={callerUsername}/>}
+            {callRejected.rejected && <RejectedCallDialog 
+                reason={callRejected.reason}
+                hideRejectedCallDialog={hideRejectedCallDialog}
+            />}
+            {callState === callStates.CALL_REQUESTED && <IncomingCallDialog callerUsername={callerUsername} />}
             {callingDialogVisible && <CallingDialog />}
         </>
     )
@@ -30,4 +42,10 @@ function mapStoreStateToProps ({call}) {
     }
 };
 
-export default connect(mapStoreStateToProps, null)(DirectCall);
+function mapDispatchToProps (dispatch) {
+    return {
+        hideRejectedCallDialog: (callRejectedDetails) => dispatch(setCallRejected(callRejectedDetails))
+    };
+};
+
+export default connect(mapStoreStateToProps, mapDispatchToProps)(DirectCall);

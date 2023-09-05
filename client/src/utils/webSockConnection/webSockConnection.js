@@ -40,6 +40,22 @@ export const connectWithWebSocket = () => {
         socket.on('pre-offer', (data) => {
             webRTCHandler.handlePreOffer(data);
         });
+
+        socket.on('pre-offer-answer', (data) => {
+            webRTCHandler.handlePreOfferAnswer(data);
+        });
+
+        socket.on('webRTC-offer', (data) => {
+            webRTCHandler.handleOffer(data);
+        });
+
+        socket.on('webRTC-answer', (data) => {
+            webRTCHandler.handleAnswer(data);
+        });
+        
+        socket.on('webRTC-candidate', (data) => {
+            webRTCHandler.handleCandidate(data);
+        });
     };
 
     return socket;
@@ -62,18 +78,9 @@ export const sendPreOffer = (data) => {
     socket.emit('pre-offer', data);
 };
 
-// export const refreshSocketId = () => {
-//     const jwtToken = AuthService.getToken();
-
-//     setTimeout(() => {
-//         if(socket && socket.connected && jwtToken) {
-//             socket.emit('refreshSocketId', jwtToken);
-//             console.log('emitted refreshSocketId with token:>> ', jwtToken);
-//         } else {
-//             console.log('socket not init or not connected');
-//         }
-//     }, 1000);
-// };
+export const sendPreOfferAnswer = (data) => {
+    socket.emit('pre-offer-answer', data);
+};
 
 export const requestActiveUsers = () => {
     setTimeout(() => {
@@ -86,16 +93,24 @@ export const requestActiveUsers = () => {
     }, 1000); // Delay of 1 second so socket connection happens first
 };
 
+export const sendWebRTCOffer = (data) => {
+    socket.emit('webRTC-offer', data);
+};
+
+export const sendWebRTCAnswer = (data) => {
+    socket.emit('webRTC-answer', data);
+};
+
+export const sendWebRTCCandidate = (data) => {
+    socket.emit('webRTC-candidate', data);
+};
 
 const handleBroadcastEvents = (data) => {
-    console.log("Received data:", data);
     switch (data.event) {
         case broadcastEventTypes.ACTIVE_USERS:
-            console.log("Before filtering:", data.activeUsers);
             const activeUsers = data.activeUsers.filter(
               activeUser => activeUser.socketId !== socket.id
             );
-            console.log("After filtering:", activeUsers);
             store.dispatch(dashboardActions.setActiveUsers(activeUsers));
             break;
         default:
