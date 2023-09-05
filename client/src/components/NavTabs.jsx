@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Auth from '../utils/auth';
 
 function NavTabs() {
+    const navigate = useNavigate();
+
     const currentPage = useLocation().pathname;
     const [isNavCollapsed,  setIsNavCollapsed] = useState(true);
 
@@ -11,6 +13,8 @@ function NavTabs() {
     const logout = (event) => {
       event.preventDefault();
       Auth.logout();
+      navigate("/");
+      location.reload();
     };
   
     return (
@@ -61,6 +65,8 @@ function NavTabs() {
                 About Us
                 </Link>
               </li>
+              {Auth.loggedIn() ? (
+              <>
               <li className="nav-item block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                 <Link
                   to="/Groups"
@@ -79,6 +85,9 @@ function NavTabs() {
                   Profile
                 </Link>
               </li>
+              </>
+              ) : (<></>)
+              }
               <li className="nav-item block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                 <Link
                   to="/Contact"
@@ -94,7 +103,7 @@ function NavTabs() {
                   </button>
                 ) : (
                 <>
-                  <Link className="btn btn-lg btn-primary m-2 nav-item block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" to="/login">
+                  <Link className="nav-item block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" to="/login">
                     Login
                   </Link>
                   <Link className="nav-item block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" to="/SignUp">

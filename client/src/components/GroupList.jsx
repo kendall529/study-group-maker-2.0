@@ -1,19 +1,34 @@
 import { Link } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
-import { ENROLL } from '../utils/mutations';
+import { ENROLL, UNENROLL } from '../utils/mutations';
 import { React, useState, useContext } from 'react';
 import { Card } from 'flowbite-react';
+import { GET_USER } from '../utils/queries';
 
 const GroupList = ({ groups, user }) => {
-  const [enroll, { error }] = useMutation(ENROLL);
+  const [enroll, { error: enrollError }] = useMutation(ENROLL);
+  const [unEnroll, { error: unEnrollError }] = useMutation(UNENROLL);
 
-  const handleFormSubmit = async (groupId) => {
+
+  const handleJoinButton = async (groupId) => {
     try {
       const { data } = await enroll({
         variables: { group_id: groupId }, 
       });
 
-      console.log(data);
+      location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleLeaveButton = async (groupId) => {
+    try {
+      const { data } = await unEnroll({
+        variables: { group_id: groupId }, 
+      });
+
+      location.reload();
     } catch (error) {
       console.error(error);
     }
@@ -49,12 +64,21 @@ const GroupList = ({ groups, user }) => {
                     {group.zoom_link}
                 </Link>
             </p>
+            { !user.groups.find((userGroup) => userGroup._id === group._id) ?
             <button
-              onClick={() => handleFormSubmit(group._id)} // Passes the group ID when the button is clicked
+              onClick={() => handleJoinButton(group._id)} // Passes the group ID when the button is clicked
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Join Group
             </button>
+            :
+            <button
+            onClick={() => handleLeaveButton(group._id)} // Passes the group ID when the button is clicked
+            className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+          >
+            Leave Group
+          </button>
+            }
           </div>
         ))}
     </div>
