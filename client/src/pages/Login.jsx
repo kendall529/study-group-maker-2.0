@@ -74,7 +74,7 @@ const Login = (props) => {
   return (
       <div className="col-12 col-lg-10">
         <div className="card">
-          <h4 className="mt-12 text-white text-2xl flex justify-center font-semibold">Login</h4>
+          <h4 className="mt-14 text-white text-2xl flex justify-center font-semibold">Login</h4>
           <div className="card-body">
             {data ? (
               <p>

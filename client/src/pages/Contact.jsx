@@ -3,7 +3,7 @@ const Contact = () => {
     return (
         <div>
           <div>
-            <h2 className="mb-6 mt-12 text-white flex justify-center text-2xl font-semibold">Contact Us</h2>
+            <h2 className="mb-6 mt-14 text-white flex justify-center text-2xl font-semibold">Contact Us</h2>
 
             <form id = "contact-form">
                 <div className="input-box mb-6 flex justify-center space-x-2">
