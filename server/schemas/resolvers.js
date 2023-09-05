@@ -28,6 +28,9 @@ const resolvers = {
     getTopics: async (parent, args, context) => {
         return await Topic.find({});
     },
+    getMembers: async (parent, {group_id}, context) => {
+      return await User.find({ groups: group_id })
+    },
   },
   Mutation: {
     login: async (parent, { username, password }) => {

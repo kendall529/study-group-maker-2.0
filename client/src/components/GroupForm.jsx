@@ -69,7 +69,7 @@ const GroupForm = ({groups,topics, user, title}) => {
                             <select className="select rounded-lg" name="topic_id" id="topic_id" onChange={handleInputChange}>
                             {topics &&
                                 topics.map((topic) => (
-                                <option value={topic._id}>{topic.topic_name}</option>
+                                <option key={topic._id} value={topic._id}>{topic.topic_name}</option>
                                 ))}
                         </select>
                     </div>
