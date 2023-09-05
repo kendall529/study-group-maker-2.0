@@ -43,7 +43,7 @@ const GroupList = ({ groups, user }) => {
             className="group-card max-w-sm mb-6 mx-4 px-6 font-serif bg-gray-400 border border-gray-400 rounded-2xl shadow-lg shadow-blue-800 hover:bg-gray-600 border-gray-600"
           >
             <h2 className="text-blue-800 font-semibold text-4xl">
-              <Link to={`/groups/${group._id}`}>{group.group_name}</Link>
+              {group.group_name}
             </h2>
             <p>Description: {group.group_description}</p>
             <p>
