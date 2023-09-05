@@ -1,0 +1,50 @@
+[
+  {
+      "username": "shawn777",
+      "first_name": "Shawn",
+      "last_name": "Robinson",
+      "email": "shawn@mail.com",
+      "password": "Password01",
+      "groups": []
+  },
+  {
+      "username": "gabby98",
+      "first_name": "Gabriela",
+      "last_name": "Robinson",
+      "email": "gabby@mail.com",
+      "password": "Password02",
+      "groups": []
+  },
+  {
+      "username": "nam123",
+      "first_name": "Nam",
+      "last_name": "Nguyen",
+      "email": "nam@mail.com",
+      "password": "Password03",
+      "groups": []
+  },
+  {
+      "username": "jennifer111",
+      "first_name": "Jennifer",
+      "last_name": "Dutton",
+      "email": "jennifer@mail.com",
+      "password": "Password04",
+      "groups": []
+  },
+  {
+      "username": "kendall999",
+      "first_name": "Kendall",
+      "last_name": "Smith",
+      "email": "kendall@mail.com",
+      "password": "Password05",
+      "groups": []
+  },
+  {
+    "username": "michaela000",
+    "first_name": "Michaela",
+    "last_name": "Brown",
+    "email": "michaela@mail.com",
+    "password": "Password07",
+    "groups": []
+  }
+]
