@@ -1,7 +1,7 @@
 const typeDefs = `
   type User {
     _id: ID!
-    user_name: String!
+    username: String!
     first_name: String
     last_name: String
     email: String!
@@ -45,8 +45,8 @@ const typeDefs = `
   }
 
   type Mutation {
-    login(user_name: String!, password: String!): Auth
-    addUser(user_name: String!, email: String!, password: String!): Auth
+    login(username: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
     addGroup(group_name: String!, group_description: String!, topic_id: ID!, skill_level: String!, zoom_link: String!, meet_time: String!): Group
     removeGroup(group_id: ID!): Group
     enroll(group_id: ID!): User

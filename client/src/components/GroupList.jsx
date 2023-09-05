@@ -41,7 +41,7 @@ const GroupList = ({ groups, user }) => {
                 Time to Meet: {group.meet_time}
             </p>
             <p>
-                Created by: {group.created_by.user_name}
+                Created by: {group.created_by.username}
             </p>
             <p>
                 Meeting Link: 

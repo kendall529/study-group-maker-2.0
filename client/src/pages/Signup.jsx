@@ -9,7 +9,7 @@ import Auth from '../utils/auth';
 
 const SignUp = () => {
     const [formState, setFormState] = useState({
-    user_name: '',
+    username: '',
     email: '',
     password: '',
   });
@@ -65,13 +65,13 @@ const SignUp = () => {
                 />
                 </div>
                 <div className='mb-6 flex justify-center'>
-                  <label htmlFor="user_name" className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'></label>
+                  <label htmlFor="username" className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'></label>
                 <input
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/5 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required
                   placeholder="Username"
-                  name="user_name"
+                  name="username"
                   type="text"
-                  value={formState.user_name}
+                  value={formState.username}
                   onChange={handleChange}
                 />
                 </div>

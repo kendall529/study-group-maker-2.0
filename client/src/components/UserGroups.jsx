@@ -30,18 +30,18 @@ const UserGroups = ({ groups, users}) => {
                                             Time to Meet: {group.meet_time}
                                         </p>
                                         <p>
-                                            Created by: {group.created_by.user_name}
+                                            Created by: {group.created_by.username}
                                         </p>
                                     </div>
                                 </div>
                                 <div>
                                     <form id="add-user-{{group.id}}" class="add-user form" action="">
-                                        <label class="label" for="user_names">Add User: </label>
-                                        <select class="select user_names" name="user_names">
+                                        <label class="label" for="usernames">Add User: </label>
+                                        <select class="select usernames" name="usernames">
                                         {
                                             group.users &&
                                                 group.users.map((user) =>
-                                                <option value={user.id}>{user.user_name}
+                                                <option value={user.id}>{user.username}
                                                 </option>
                                                 )
                                         }

@@ -30,8 +30,8 @@ const resolvers = {
     },
   },
   Mutation: {
-    login: async (parent, { user_name, password }) => {
-      const user = await User.findOne({ user_name });
+    login: async (parent, { username, password }) => {
+      const user = await User.findOne({ username });
 
       if (!user) {
         throw AuthenticationError;
@@ -52,7 +52,7 @@ const resolvers = {
       return { token, user };
     },
 
-    addUser: async (_, { user_name, email, password }) => {
+    addUser: async (_, { username, email, password }) => {
       try {
         // Check if the email is already in use
         const existingUser = await User.findOne({ email });
@@ -62,7 +62,7 @@ const resolvers = {
 
         // Create a new user document
         const user = new User({
-          user_name: user_name,
+          username: username,
           email,
           password: password,
           groups: []

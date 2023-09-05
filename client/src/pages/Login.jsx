@@ -14,7 +14,7 @@ const UsernameInput = ({ currentUsername, updateUsername }) => {
       <input
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/5 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required
           placeholder="Username"
-          name="user_name"
+          name="username"
           type="text"
           value={currentUsername}
           onChange={(event) => { 
@@ -25,7 +25,7 @@ const UsernameInput = ({ currentUsername, updateUsername }) => {
 
 const Login = (props) => {
     const dispatch = useDispatch();
-    const [formState, setFormState] = useState({ user_name: '', password:''});
+    const [formState, setFormState] = useState({ username: '', password:''});
     const [login, {error, data}] = useMutation(LOGIN_USER);
     const navigate = useNavigate();
     
@@ -44,15 +44,15 @@ const Login = (props) => {
     const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    dispatch(setUsername(formState.user_name)); // sets username in Redux store
+    dispatch(setUsername(formState.username)); // sets username in Redux store
 
-    registerNewUser(formState.user_name);
+    registerNewUser(formState.username);
 
     try {
 
       console.log('attempting login ...');
       const mutationRes = await login({
-        variables: { user_name: formState.user_name, password: formState.password },
+        variables: { username: formState.username, password: formState.password },
       });
 
       Auth.login(mutationRes.data.login.token);
@@ -64,7 +64,7 @@ const Login = (props) => {
 
     // clearing the form
     setFormState({
-      user_name: '',
+      username: '',
       password: '',
     });
 
@@ -84,10 +84,10 @@ const Login = (props) => {
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <div className='mb-6 mt-6 flex justify-center'>
-                  <label htmlFor="user_name" className='block mb-6 text-sm font-medium text-gray-900 dark:text-white'></label>
+                  <label htmlFor="username" className='block mb-6 text-sm font-medium text-gray-900 dark:text-white'></label>
                   <UsernameInput
-                    currentUsername={formState.user_name}
-                    updateUsername={(newUsername) => setFormState({ ...formState, user_name: newUsername })}
+                    currentUsername={formState.username}
+                    updateUsername={(newUsername) => setFormState({ ...formState, username: newUsername })}
                   />
                 </div>
                 <div className='mb-6 flex justify-center'>
