@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styling/ActiveUsersList.css';
 import contactImg from '../assets/images/user_1946845.png'
+import { callToOtherUser } from '../utils/webRTC/webRTCHandle';
 
 
 const ActiveUsersListItem = (props) => {
@@ -8,6 +9,7 @@ const ActiveUsersListItem = (props) => {
     
     const handleListItemPressed = () => {
         // call to other user
+        callToOtherUser(activeUser);
     };
 
     return (

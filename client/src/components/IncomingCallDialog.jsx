@@ -50,7 +50,8 @@ const styles = {
 }
 
 
-const IncomingCallDialog = () => {
+const IncomingCallDialog = ({ callerUsername }) => {
+    console.log('callerUsername:>> ', callerUsername); // debug
     // Initialize hover state as an object
     const [hover, setHover] = useState({ accept: false, reject: false });
 
@@ -87,7 +88,7 @@ const IncomingCallDialog = () => {
 
     return (
         <div style={styles.directCallingDialog}>
-            <span style={styles.directCallingDialogCallerName}>Calling</span>
+            <span style={styles.directCallingDialogCallerName}>{callerUsername}</span>
             <div style={styles.directCallingDialogBtnContainer}>
                 <button 
                     style={acceptBtnStyle}

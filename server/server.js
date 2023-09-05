@@ -97,6 +97,16 @@ const startApolloServer = async () => {
           activeUsers: peers
         });
       });
+
+      // listeners for direct calls
+
+      socket.on('pre-offer', data => {
+        console.log('pre-offer-data:>> ', data);
+        io.to(data.callee.socketId).emit('pre-offer', {
+          callerUsername: data.caller.username,
+          callerSocketId: socket.id
+        });
+      });
     });
   });
 };
