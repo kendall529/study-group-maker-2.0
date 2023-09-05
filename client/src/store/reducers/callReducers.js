@@ -2,7 +2,14 @@ import * as callActions from '../actions/callActions';
 
 const initialState = {
     localStreamId: null,
-    callState: callActions.callStates.CALL_UNAVAILABLE
+    callState: callActions.callStates.CALL_UNAVAILABLE,
+    callingDialogVisible: false,
+    callerUsername: '',
+    callRejected: {
+        rejected: false,
+        reason: ''
+    },
+    remoteStreamId: null,
 };
 
 const callReducer = (state = initialState, action) => {
@@ -26,7 +33,17 @@ const callReducer = (state = initialState, action) => {
             return {
                 ...state,
                 callerUsername: action.callerUsername
-            }
+            };
+        case callActions.CALL_SET_CALL_REJECTED:
+            return{
+                ...state,
+                callRejected: action.callRejected
+            };
+        case callActions.CALL_SET_REMOTE_STREAM:
+            return {
+                ...state,
+                remoteStreamId: action.remoteStreamId
+            };
             default:
                 return state;
     };
