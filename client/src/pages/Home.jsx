@@ -10,7 +10,7 @@ const Home = () => {
           <div>
             <section className='bg-image bg-cover bg-center h-96' style={{ backgroundImage: "url('src/assets/images/books.jpg')" }} id="home">
                 <div className="mission-statement-container container mx-auto flex justify-center">
-                    <div className="mission-wrapper mt-10 text-center">
+                    <div className="mission-wrapper mt-12 text-center">
                         <h1 className="mission-statement text-4xl font-bold text-white mt-2">We want to make it easier for people to
                         study together.</h1>
 
@@ -44,7 +44,7 @@ const Home = () => {
 
                     <div className="about-card text-gray-400">
                         <h3>Future</h3>
-                        <p>We hope to host our own chat-rooms and video calls that can then be
+                        <p>We hope to host our own chat-rooms that can then be
                         further customized as
                         learning spaces that help improve a student's learning experience by greater leaps.</p>
                     </div>
