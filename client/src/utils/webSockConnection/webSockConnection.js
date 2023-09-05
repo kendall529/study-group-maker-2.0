@@ -2,6 +2,7 @@ import socketClient from 'socket.io-client';
 import store from '../../store/store';
 import * as dashboardActions from "../../store/actions/dashboardActions";
 import AuthService from '../auth';  // Import AuthService to access JWT tokens
+import * as webRTCHandler from '../webRTC/webRTCHandle';
 
 const SERVER = 'http://localhost:3001';
 
@@ -35,7 +36,11 @@ export const connectWithWebSocket = () => {
             handleBroadcastEvents(data);
         });
 
-    }
+        // listeners for direct calls
+        socket.on('pre-offer', (data) => {
+            webRTCHandler.handlePreOffer(data);
+        });
+    };
 
     return socket;
 };
@@ -45,14 +50,17 @@ export const registerNewUser = (username) => {
         socket.emit('register-new-user', {
             username: username,
             socketId: socket.id
-        });
-        console.log(`Emitting register-new-user for username: ${username}`);
+        })
     } else {
         console.log('Socket not connected. Cannot register new user.');
     }
 };
 
+// emit events to server for direct call
 
+export const sendPreOffer = (data) => {
+    socket.emit('pre-offer', data);
+};
 
 // export const refreshSocketId = () => {
 //     const jwtToken = AuthService.getToken();

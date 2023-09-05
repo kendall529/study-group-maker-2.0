@@ -1,6 +1,7 @@
 .active-user-list-container {
     width: 100%;
     height: 100%;
+    padding-top: 70px;
   }
   
   .active-user-list-item {
@@ -9,11 +10,10 @@
     display: flex;
     align-items: center;
     transition: 0.3s;
-    padding-top: 70px;
   }
   
   .active-user-list-item:hover {
-    background-color: #8885b9;
+    background-color: #26209b93;
   }
   
   .active-user-list-image-container {
