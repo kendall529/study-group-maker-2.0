@@ -19,7 +19,7 @@ const UserGroups = ({ users }) => {
   };
 
   return (
-		<div className='flex flex-wrap justify-center' style={{paddingTop: "75px"}}>
+		<div style={{paddingTop: "75px"}}>
 			{users.groups && users.groups.map((group) => (
 				<Card key={group._id} className='group-card max-w-sm mb-6 mx-4 px-6 font-serif bg-gray-400 border border-gray-400 rounded-2xl shadow-lg shadow-blue-800 hover:bg-gray-600 border-gray-600'>
 					<div className="user-group-list-container">

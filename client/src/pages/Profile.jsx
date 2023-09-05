@@ -25,7 +25,7 @@ const Profile = () => {
               <div>Loading...</div>
             ) : (
               <>
-              <div>
+              <div className='flex flex-row-reverse w-full justify-around'>
                 <UserGroups
                 users = {users}
                 />
