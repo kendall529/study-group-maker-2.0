@@ -28,7 +28,7 @@ const UserGroups = ({ users }) => {
 								<div className="user-group-info">
 									<div>
 										<h2 className='text-blue-800 font-semibold text-4xl'>
-											<a href="/groups/{{group._id}}">{group.group_name}</a>
+										{group.group_name}
 										</h2>
 										<p>Study Topic: {group.topic_id.topic_name}!</p>
 										<p>Skill Level: {group.skill_level}</p>
