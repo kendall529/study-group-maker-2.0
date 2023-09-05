@@ -1,5 +1,7 @@
 import React , { useRef, useEffect } from 'react';
 
+import '../styling/RemoteVideoView.css';
+
 const styles = {
     videoContainer: {
         width: '100%',

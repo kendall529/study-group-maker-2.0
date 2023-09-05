@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const styles = {
     rejectedCallDialog: {
@@ -16,10 +16,19 @@ const styles = {
     }
 }
 
-const RejectedCallDialog = () => {
+const RejectedCallDialog = ({ reason, hideRejectedCallDialog }) => {
+    useEffect(() => {
+        setTimeout(() => {
+            hideRejectedCallDialog({
+                rejected: false,
+                reason: ''
+            });
+        }, [4000]);
+    }, []);
+
     return (
         <div style={styles.rejectedCallDialog}>
-            <span>Call rejected</span>
+            <span>{reason}</span>
         </div>
     )
 }

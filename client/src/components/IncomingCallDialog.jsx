@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { acceptIncomingCallRequest, rejectIncomingCallRequest } from '../utils/webRTC/webRTCHandle';
 
 const styles = {
     directCallingDialog: {
@@ -51,7 +52,6 @@ const styles = {
 
 
 const IncomingCallDialog = ({ callerUsername }) => {
-    console.log('callerUsername:>> ', callerUsername); // debug
     // Initialize hover state as an object
     const [hover, setHover] = useState({ accept: false, reject: false });
 
@@ -65,10 +65,12 @@ const IncomingCallDialog = ({ callerUsername }) => {
 
     const handleRejectBtnPress = () => {
         // reject call
+        rejectIncomingCallRequest();
     }
 
     const handleAcceptBtnPress = () => {
         // accept call
+        acceptIncomingCallRequest();
     }
 
     // Computed styles based on hover state for each button
