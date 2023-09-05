@@ -31,7 +31,7 @@ const Dashboard = () => {
                     <ActiveUsersList />
                 </div>
                 <div className='dashboard-logo-container'>
-                    <img src="..." alt="..." />
+                    <img src="./src/assets/images/logo4.png" alt="..." />
                 </div>
             </div>
         </div>
