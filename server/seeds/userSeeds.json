@@ -1,6 +1,6 @@
 [
   {
-      "user_name": "shawn777",
+      "username": "shawn777",
       "first_name": "Shawn",
       "last_name": "Robinson",
       "email": "shawn@mail.com",
@@ -8,7 +8,7 @@
       "groups": []
   },
   {
-      "user_name": "gabby98",
+      "username": "gabby98",
       "first_name": "Gabriela",
       "last_name": "Robinson",
       "email": "gabby@mail.com",
@@ -16,7 +16,7 @@
       "groups": []
   },
   {
-      "user_name": "nam123",
+      "username": "nam123",
       "first_name": "Nam",
       "last_name": "Nguyen",
       "email": "nam@mail.com",
@@ -24,7 +24,7 @@
       "groups": []
   },
   {
-      "user_name": "jennifer111",
+      "username": "jennifer111",
       "first_name": "Jennifer",
       "last_name": "Dutton",
       "email": "jennifer@mail.com",
@@ -32,7 +32,7 @@
       "groups": []
   },
   {
-      "user_name": "kendall999",
+      "username": "kendall999",
       "first_name": "Kendall",
       "last_name": "Smith",
       "email": "kendall@mail.com",
@@ -40,7 +40,7 @@
       "groups": []
   },
   {
-    "user_name": "michaela000",
+    "username": "michaela000",
     "first_name": "Michaela",
     "last_name": "Brown",
     "email": "michaela@mail.com",

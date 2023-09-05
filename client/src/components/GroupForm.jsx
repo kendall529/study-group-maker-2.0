@@ -45,7 +45,7 @@ const GroupForm = ({groups,topics, user, title}) => {
     return (
         <div>
         <div className='flex justify-center'>
-        <h2 className="mt-6 mb-2 text-white text-3xl font-semibold">Ready to study, {user.user_name}?!</h2>
+        <h2 className="mt-6 mb-2 text-white text-3xl font-semibold">Ready to study, {user.username}?!</h2>
       </div>
 
 

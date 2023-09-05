@@ -4,7 +4,7 @@ export const GET_USERS = gql`
   query GetUsers {
     getUsers {
       _id
-      user_name
+      username
       first_name
       last_name
       email
@@ -20,7 +20,7 @@ export const GET_USERS = gql`
         meet_time
         created_by {
           _id
-          user_name
+          username
           first_name
           last_name
         }
@@ -34,7 +34,7 @@ query GetUser {
   getUser
   {
     _id
-    user_name
+    username
     first_name
     last_name
     email
@@ -50,7 +50,7 @@ query GetUser {
       meet_time
       created_by {
         _id
-        user_name
+        username
         first_name
         last_name
       }
@@ -73,7 +73,7 @@ export const GET_GROUPS = gql`
       meet_time
       created_by {
         _id
-        user_name
+        username
         first_name
         last_name
       }
@@ -95,7 +95,7 @@ export const GET_GROUP = gql`
       meet_time
       created_by {
         _id
-        user_name
+        username
         first_name
         last_name
       }
@@ -116,7 +116,7 @@ export const GET_MEMBERS = gql`
   query GetMembers($group_id: ID!) {
     getMembers(group_id: $group_id) {
       _id
-      user_name
+      username
       email
     }
   }
