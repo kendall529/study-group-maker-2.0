@@ -35,15 +35,9 @@ export const ADD_GROUP = gql`
 export const REMOVE_GROUP = gql`
   mutation removeGroup($group_id: ID!) {
     removeGroup(group_id: $group_id) {
-			group_name
-			group_description
-			topic_id {
-				topic_name
-			}
-			skill_level
-			zoom_link
-			meet_time
-			created_by
+      _id
+      group_name
+      group_description
     }
   }
 `;
@@ -52,21 +46,8 @@ export const ENROLL = gql`
   mutation enroll( $group_id: ID!) {
     enroll(group_id: $group_id) {
       _id
-      username
-      first_name
-      last_name
+      user_name
       email
-      groups {
-        group_name
-        group_description
-        topic_id {
-					topic_name
-        }
-        skill_level
-        zoom_link
-        meet_time
-				created_by
-      }
 		}
   }
 `;
@@ -75,21 +56,8 @@ export const UNENROLL = gql`
   mutation unEnroll($group_id: ID!) {
     unEnroll(group_id: $group_id) {
       _id
-      username
-      first_name
-      last_name
+      user_name
       email
-      groups {
-        group_name
-        group_description
-        topic_id {
-					topic_name
-        }
-        skill_level
-        zoom_link
-        meet_time
-				created_by
-      }
 		}
   }
 `;
