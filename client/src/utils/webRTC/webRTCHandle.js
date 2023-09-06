@@ -46,6 +46,23 @@ export const getLocalStream = () => {
 const createPeerConnection = () => {
     peerConnection = new RTCPeerConnection(configuration);
 
+    peerConnection.onicegatheringstatechange = event => {
+        console.log(`ICE gathering state: ${peerConnection.iceGatheringState}`);
+      };
+      
+      peerConnection.oniceconnectionstatechange = event => {
+        console.log(`ICE connection state: ${peerConnection.iceConnectionState}`);
+      };
+      
+      peerConnection.onsignalingstatechange = event => {
+        console.log(`Signaling state: ${peerConnection.signalingState}`);
+      };
+    
+      peerConnection.onerror = (error) => {
+        console.error(`RTCPeerConnection error: ${error}`);
+      };
+      
+
     const localStream = mediaStreamStorage[store.getState().call.localStreamId];
     console.log('localStream:>>', localStream);
 
@@ -66,7 +83,7 @@ const createPeerConnection = () => {
                 candidate: event.candidate,
                 connectedUserSocketId: connectedUserSocketId
             });
-            console.log('connected user socket id:>>', connectedUserSocketId);
+            // console.log('connected user socket id:>>', connectedUserSocketId);
         }
     };
 
@@ -143,7 +160,10 @@ export const handlePreOfferAnswer = (data) => {
     }
 };
 
+let canAddIceCandidate = false;
+
 const sendOffer = async () => {
+    createPeerConnection(); // Ensure PeerConnection is ready
     const offer = await peerConnection.createOffer();
     await peerConnection.setLocalDescription(offer);
     wss.sendWebRTCOffer({
@@ -152,36 +172,46 @@ const sendOffer = async () => {
     });
 };
 
-let canAddIceCandidate = false;
-
 export const handleOffer = async (data) => {
+    createPeerConnection(); // Ensure PeerConnection is ready
     await peerConnection.setRemoteDescription(data.offer);
     canAddIceCandidate = true;
     const answer = await peerConnection.createAnswer();
+    console.log('generated answer', answer);
     await peerConnection.setLocalDescription(answer);
     wss.sendWebRTCAnswer({
         callerSocketId: connectedUserSocketId,
         answer: answer
     });
-    console.log('handleOffer');
+    console.log('answer sent', answer);
 };
 
 export const handleAnswer = async (data) => {
     await peerConnection.setRemoteDescription(data.answer);
+    console.log('data.answer:>>', data.answer);
     canAddIceCandidate = true;
     console.log('handleAnswer');
 };
 
+let pendingCandidates = [];
+
 export const handleCandidate = async (data) => {
     try {
         if(canAddIceCandidate) {
-            console.log('adding ice candidates', data);
+            console.log('Ready to add ice candidates');
             await peerConnection.addIceCandidate(data.candidate);
+            // Add pending candidates if any
+            while (pendingCandidates.length) {
+                await peerConnection.addIceCandidate(pendingCandidates.shift());
+            }
+        } else {
+            console.log('Not ready to add ice candidates, queuing.');
+            pendingCandidates.push(data.candidate);
         }
     } catch (err) {
-        console.error('error at ice candidate',err)
+        console.error('error at ice candidate', err);
     }
-}
+};
 
 export const checkIfCallIsPossible = () => {
     if(store.getState().call.localStreamId === null ||
