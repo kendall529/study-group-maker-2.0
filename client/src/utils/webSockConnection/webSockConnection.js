@@ -47,10 +47,12 @@ export const connectWithWebSocket = () => {
 
         socket.on('webRTC-offer', (data) => {
             webRTCHandler.handleOffer(data);
+            console.log('handling offer data:>>', data);
         });
 
         socket.on('webRTC-answer', (data) => {
             webRTCHandler.handleAnswer(data);
+            console.log('received answer data:>>', data);
         });
         
         socket.on('webRTC-candidate', (data) => {
@@ -95,10 +97,12 @@ export const requestActiveUsers = () => {
 
 export const sendWebRTCOffer = (data) => {
     socket.emit('webRTC-offer', data);
+    console.log('sendOffer to server', data);
 };
 
 export const sendWebRTCAnswer = (data) => {
     socket.emit('webRTC-answer', data);
+    console.log('sendAnswer to server', data);
 };
 
 export const sendWebRTCCandidate = (data) => {
