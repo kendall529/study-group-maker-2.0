@@ -101,6 +101,7 @@ const startApolloServer = async () => {
       // listeners for direct calls
 
       socket.on('pre-offer', data => {
+        console.log('pre-offer-data:>>', data.caller.username);
         io.to(data.callee.socketId).emit('pre-offer', {
           callerUsername: data.caller.username,
           callerSocketId: socket.id
@@ -108,6 +109,7 @@ const startApolloServer = async () => {
       });
 
       socket.on('pre-offer-answer', (data) => {
+        console.log('pre-offer-answer data:>>', data.answer);
         io.to(data.callerSocketId).emit('pre-offer-answer', {
           answer: data.answer
         });
@@ -122,13 +124,13 @@ const startApolloServer = async () => {
 
       socket.on('webRTC-answer', (data) => {
         console.log('webRTC-answer-data:>> ', data);
-        io.to(data.calleeSocketId).emit('webRTC-answer', {
+        io.to(data.callerSocketId).emit('webRTC-answer', {
           answer: data.answer
         });
       });
 
       socket.on('webRTC-candidate', (data) => {
-        console.log('webRTC-candidate-data:>>', data);
+        // console.log('webRTC-candidate-data:>>', data);
         io.to(data.connectedUserSocketId).emit('webRTC-candidate', {
           candidate: data.candidate
         });
